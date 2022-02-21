@@ -1,8 +1,8 @@
 package commands
 
 import (
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 var createIngredientCommand = `

@@ -88,15 +88,15 @@ ALTER TABLE recipe_ingredient
 
 -- User
 -- Drop pkey
-ALTER TABLE vrecipes_user
+ALTER TABLE tasteit_user
     DROP CONSTRAINT user_pkey;
 
 -- Rename old column
-ALTER TABLE vrecipes_user
+ALTER TABLE tasteit_user
     RENAME COLUMN id TO old_id;
 
 -- Create new id column
-ALTER TABLE vrecipes_user
+ALTER TABLE tasteit_user
     ADD COLUMN id uuid PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4();
 
 -- ==============================================================
@@ -271,14 +271,14 @@ ALTER TABLE recipe
 UPDATE recipe *
 SET created_by = subquery.id
 FROM (
-    SELECT old_created_by AS old_cb, vrecipes_user.id, vrecipes_user.old_id AS vu_old_id, created_by
+    SELECT old_created_by AS old_cb, tasteit_user.id, tasteit_user.old_id AS vu_old_id, created_by
     FROM recipe
-             JOIN vrecipes_user ON old_created_by = vrecipes_user.old_id
+             JOIN tasteit_user ON old_created_by = tasteit_user.old_id
 ) AS subquery
 WHERE subquery.vu_old_id = old_created_by;
 
 ALTER TABLE recipe
-    ADD FOREIGN KEY (created_by) REFERENCES vrecipes_user (id),
+    ADD FOREIGN KEY (created_by) REFERENCES tasteit_user (id),
     DROP COLUMN old_created_by,
     ALTER COLUMN created_by SET NOT NULL;
 
@@ -292,14 +292,14 @@ ALTER TABLE recipe_book
 UPDATE recipe_book *
 SET created_by = subquery.id
 FROM (
-    SELECT old_created_by AS old_cb, vrecipes_user.id, vrecipes_user.old_id AS vu_old_id, created_by
+    SELECT old_created_by AS old_cb, tasteit_user.id, tasteit_user.old_id AS vu_old_id, created_by
     FROM recipe_book
-             JOIN vrecipes_user ON old_created_by = vrecipes_user.old_id
+             JOIN tasteit_user ON old_created_by = tasteit_user.old_id
 ) AS subquery
 WHERE subquery.vu_old_id = old_created_by;
 
 ALTER TABLE recipe_book
-    ADD FOREIGN KEY (created_by) REFERENCES vrecipes_user (id),
+    ADD FOREIGN KEY (created_by) REFERENCES tasteit_user (id),
     DROP COLUMN old_created_by,
     ALTER COLUMN created_by SET NOT NULL;
 
@@ -313,14 +313,14 @@ ALTER TABLE user_email
 UPDATE user_email *
 SET user_id = subquery.id
 FROM (
-    SELECT old_user_id AS old_ui, vrecipes_user.id, old_id, user_id
+    SELECT old_user_id AS old_ui, tasteit_user.id, old_id, user_id
     FROM user_email
-             JOIN vrecipes_user ON old_user_id = old_id
+             JOIN tasteit_user ON old_user_id = old_id
 ) AS subquery
 WHERE subquery.old_id = old_user_id;
 
 ALTER TABLE user_email
-    ADD FOREIGN KEY (user_id) REFERENCES vrecipes_user (id),
+    ADD FOREIGN KEY (user_id) REFERENCES tasteit_user (id),
     DROP COLUMN old_user_id,
     ALTER COLUMN user_id SET NOT NULL;
 
@@ -340,5 +340,5 @@ ALTER TABLE recipe_book
 ALTER TABLE recipe_ingredient
     DROP COLUMN old_ing_id;
 
-ALTER TABLE vrecipes_user
+ALTER TABLE tasteit_user
     DROP COLUMN old_id;

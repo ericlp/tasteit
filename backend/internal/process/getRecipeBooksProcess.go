@@ -1,10 +1,10 @@
 package process
 
 import (
+	"github.com/ericlp/tasteit/backend/internal/db/queries"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/queries"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 type RecipeBooksJson struct {

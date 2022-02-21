@@ -1,9 +1,9 @@
 package endpoints
 
 import (
+	"github.com/ericlp/tasteit/backend/internal/common"
+	"github.com/ericlp/tasteit/backend/internal/process"
 	"github.com/gin-gonic/gin"
-	"github.com/viddem/vrecipes/backend/internal/common"
-	"github.com/viddem/vrecipes/backend/internal/process"
 	"log"
 	"net/http"
 )

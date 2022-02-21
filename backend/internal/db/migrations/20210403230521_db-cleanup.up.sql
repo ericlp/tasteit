@@ -7,4 +7,4 @@ ALTER TABLE recipe_ingredient
     ALTER COLUMN ingredient_name    SET NOT NULL;
 
 ALTER TABLE IF EXISTS public.user
-    RENAME TO vrecipes_user;
+    RENAME TO tasteit_user;

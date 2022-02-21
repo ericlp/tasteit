@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS recipe_book
     unique_name TEXT NOT NULL UNIQUE,
     author      TEXT NOT NULL,
     deleted     BOOLEAN NOT NULL,
-    created_by  BIGINT REFERENCES vrecipes_user (id)
+    created_by  BIGINT REFERENCES tasteit_user (id)
 );
 
 CREATE TABLE IF NOT EXISTS recipe_book_recipe

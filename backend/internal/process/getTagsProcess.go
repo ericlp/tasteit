@@ -1,9 +1,9 @@
 package process
 
 import (
-	"github.com/viddem/vrecipes/backend/internal/db/queries"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
-	"github.com/viddem/vrecipes/backend/internal/models"
+	"github.com/ericlp/tasteit/backend/internal/db/queries"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/models"
 )
 
 type TagsJson struct {

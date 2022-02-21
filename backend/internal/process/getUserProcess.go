@@ -1,9 +1,9 @@
 package process
 
 import (
+	"github.com/ericlp/tasteit/backend/internal/db/queries"
+	"github.com/ericlp/tasteit/backend/internal/models"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/queries"
-	"github.com/viddem/vrecipes/backend/internal/models"
 )
 
 func GetUserJson(id uuid.UUID) (*models.User, error) {

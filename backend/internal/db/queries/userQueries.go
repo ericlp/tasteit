@@ -1,14 +1,14 @@
 package queries
 
 import (
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 var getUserByIdQuery = `
 SELECT id, name
-FROM vrecipes_user 
+FROM tasteit_user 
 WHERE id=$1`
 
 func GetUser(id uuid.UUID) (*tables.User, error) {
@@ -21,8 +21,8 @@ func GetUser(id uuid.UUID) (*tables.User, error) {
 
 var getUserByEmailQuery = `
 SELECT id, name
-FROM vrecipes_user
-INNER JOIN user_email ON user_email.user_id=vrecipes_user.id
+FROM tasteit_user
+INNER JOIN user_email ON user_email.user_id=tasteit_user.id
 WHERE email=$1;
 `
 

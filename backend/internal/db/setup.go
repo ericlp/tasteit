@@ -2,9 +2,9 @@ package db
 
 import (
 	"encoding/json"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/process"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
-	"github.com/viddem/vrecipes/backend/internal/process"
 	"io/ioutil"
 	"log"
 	"os"

@@ -1,6 +1,6 @@
 FROM node:16.13
 
-WORKDIR /usr/src/vrecipes/frontend
+WORKDIR /usr/src/tasteit/frontend
 COPY package.json yarn.lock ./
 RUN yarn install --network-timeout 10000000
 # COPY .env.development .env

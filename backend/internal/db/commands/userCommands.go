@@ -1,12 +1,12 @@
 package commands
 
 import (
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 var createUserCommand = `
-INSERT INTO vrecipes_user(name)
+INSERT INTO tasteit_user(name)
 VALUES(					  $1)
 RETURNING id, name
 `

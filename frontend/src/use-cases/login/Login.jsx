@@ -9,16 +9,8 @@ import {
     LoginErrorText, MicrosoftLoginButton,
     StyledFacebookIcon
 } from "./Login.styles";
-import {
-    PROVIDER_FACEBOOK,
-    PROVIDER_GITHUB,
-    PROVIDER_GOOGLE,
-    PROVIDER_MICROSOFT
-} from "./providers";
 import {getAuth} from "../../api/get.Auth.api";
 import GitHubIcon from '@material-ui/icons/GitHub';
-import {ReactComponent as GoogleIcon} from "../../resources/images/icon_google.svg"
-import {ReactComponent as MicrosoftIcon} from "../../resources/images/icon_microsoft.svg"
 import {Typography} from "@material-ui/core";
 
 
@@ -35,37 +27,13 @@ const Login = () => {
                     error === "" ? (
                         <LoginButtonsContainer>
                             <GithubLoginButton onClick={() =>
-                                login(PROVIDER_GITHUB, setError)
+                                login(setError)
                             }>
                                 <LoginButtonIcon>
                                     <GitHubIcon/>
                                 </LoginButtonIcon>
                                 Logga in med github
                             </GithubLoginButton>
-                            <GoogleLoginButton onClick={() =>
-                                login(PROVIDER_GOOGLE, setError)
-                            }>
-                                <LoginButtonIcon>
-                                    <GoogleIcon/>
-                                </LoginButtonIcon>
-                                Logga in med google
-                            </GoogleLoginButton>
-                            <FacebookLoginButton onClick={() =>
-                                login(PROVIDER_FACEBOOK, setError)
-                            }>
-                                <LoginButtonIcon>
-                                    <StyledFacebookIcon/>
-                                </LoginButtonIcon>
-                                Logga in med facebook
-                            </FacebookLoginButton>
-                            <MicrosoftLoginButton onClick={() =>
-                                login(PROVIDER_MICROSOFT, setError)
-                            }>
-                                <LoginButtonIcon>
-                                    <MicrosoftIcon/>
-                                </LoginButtonIcon>
-                                Logga in med Microsoft
-                            </MicrosoftLoginButton>
                         </LoginButtonsContainer>
                     ) : (
                         <LoginErrorText>
@@ -78,8 +46,8 @@ const Login = () => {
     )
 }
 
-function login(provider, setError) {
-    getAuth(provider)
+function login(setError) {
+    getAuth()
         .then(response => {
             setError("Oväntat svar från servern")
         })

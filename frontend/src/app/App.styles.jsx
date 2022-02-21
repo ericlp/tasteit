@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import {AppBar, IconButton, Tabs} from "@material-ui/core";
-import {ReactComponent as VRecipesLogo} from "../resources/images/group_1_transparent.svg"
-import {NavLink} from "react-router-dom";
+import { AppBar, IconButton, Tabs } from "@material-ui/core";
+import { ReactComponent as tasteitLogo } from "../resources/images/group_1_transparent.svg";
+import { NavLink } from "react-router-dom";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -13,11 +13,11 @@ export const MainContainer = styled.div`
 export const StyledAppBar = styled(AppBar)`
   height: 56px;
   margin-bottom: 24px;
-`
+`;
 
 export const AppContainer = styled.div`
   max-height: 100%;
-`
+`;
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -37,21 +37,20 @@ export const LogoTitleContainer = styled.div`
   align-items: center;
 `;
 
-export const Logo = styled(VRecipesLogo)`
+export const Logo = styled(tasteitLogo)`
   width: 46px;
   height: 46px;
-`
+`;
 
 export const EscapeHatch = styled(NavLink)`
-  border-radius: 100%; 
+  border-radius: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  
-  &:active {
-     background-color: rgba(0,0,0,0.2);
-  }
-`
 
+  &:active {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+`;

@@ -2,14 +2,14 @@ package endpoints
 
 import (
 	"errors"
+	"github.com/ericlp/tasteit/backend/internal/common"
+	"github.com/ericlp/tasteit/backend/internal/db/queries"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/models"
+	"github.com/ericlp/tasteit/backend/internal/process"
+	"github.com/ericlp/tasteit/backend/internal/validation"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/common"
-	"github.com/viddem/vrecipes/backend/internal/db/queries"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
-	"github.com/viddem/vrecipes/backend/internal/models"
-	"github.com/viddem/vrecipes/backend/internal/process"
-	"github.com/viddem/vrecipes/backend/internal/validation"
 	"log"
 	"net/http"
 )

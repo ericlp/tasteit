@@ -1,9 +1,9 @@
 package commands
 
 import (
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 var createTagCommand = `
@@ -43,7 +43,7 @@ WHERE id=$1
 
 func DeleteTag(id uuid.UUID) error {
 	db := getDb()
-	
+
 	_, err := db.Exec(ctx, deleteTagCommand, id)
 	return err
 }

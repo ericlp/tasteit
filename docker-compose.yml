@@ -1,32 +1,75 @@
 version: "3"
 services:
-    db:
-        image: postgres
-        restart: always
-        environment:
-            POSTGRES_USER: vrecipes
-            POSTGRES_DB: vrecipes
-            POSTGRES_PASSWORD: password
-        ports:
-            - 5432:5432
-        # command: -d 5
+  tasteit-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: tasteit
+      POSTGRES_DB: tasteit
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    # command: -d 5
 
-    adminer:
-        image: adminer
-        restart: always
-        ports:
-            - 8080:8080
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
-    frontend:
-        image: vrecipes_frontend_dev
-        build:
-            context: ./frontend/
-            dockerfile: dev.Dockerfile
-        ports:
-            - 3000:3000
-        volumes:
-            - ./frontend:/usr/src/vrecipes/frontend
-        environment:
-            - DEBUG_MODE=true
-        extra_hosts:
-            host.docker.internal: host-gateway
+  tasteit-frontend:
+    image: tasteit_frontend_dev
+    build:
+      context: ./frontend/
+      dockerfile: dev.Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/usr/src/tasteit/frontend
+    environment:
+      - DEBUG_MODE=true
+    extra_hosts:
+      host.docker.internal: host-gateway
+
+  gamma-frontend:
+    image: gamma-frontend:dev
+    environment:
+      HTTP_PROXY: http://gamma-backend:3000
+    ports:
+      - 3001:3000
+
+  gamma-backend:
+    image: gamma-backend:dev
+    environment:
+      # Default admin user name = admin
+      # Default admin password  = password
+
+      DB_USER: gamma
+      DB_PASSWORD: gamma
+      DB_HOST: gamma-db
+      DB_PORT: 5432
+      DB_NAME: gamma
+
+      REDIS_HOST: gamma-redis
+      REDIS_PASSWORD: ""
+      REDIS_PORT: 6379
+
+      SERVER_PORT: 3000
+      SUCCESSFUL_LOGIN: http://localhost:3001
+      CORS_ALLOWED_ORIGIN: http://localhost:3001
+      BACKEND_URI: http://localhost:8081/api/
+      PRODUCTION: "false"
+      COOKIE_DOMAIN: localhost
+      IS_MOCKING: "true"
+    ports:
+      - 8081:3000
+
+  gamma-redis:
+    image: redis:5.0
+
+  gamma-db:
+    image: postgres:10
+    environment:
+      POSTGRES_USER: gamma
+      POSTGRES_DB: gamma
+      POSTGRES_PASSWORD: gamma
