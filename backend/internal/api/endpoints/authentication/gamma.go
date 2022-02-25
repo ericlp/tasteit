@@ -61,8 +61,6 @@ type gammaMeResponse struct {
 	} `json:"groups"`
 }
 
-const providerGamma = "Gamma"
-
 var gammaConfig *oauth2.Config
 
 func init() {
@@ -100,7 +98,7 @@ func GammaCallback(c *gin.Context) {
 	}
 
 	// user.Nick may be wrong as it is used
-	err = setSession(c, user.Nick, user.Email, providerGamma, token)
+	err = setSession(c, user.Nick, token)
 	if err != nil {
 		log.Printf("Failed to save sessionData: %v\n", err)
 		abort(c)

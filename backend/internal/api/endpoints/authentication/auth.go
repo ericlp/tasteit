@@ -63,10 +63,10 @@ func initAuth(c *gin.Context, config *oauth2.Config) {
 
 func setSession(
 	c *gin.Context,
-	name, email, provider string,
+	name string,
 	token *oauth2.Token,
 ) error {
-	user, err := process.GetOrCreateUser(name, email, provider)
+	user, err := process.GetOrCreateUser(name)
 	if err != nil {
 		return err
 	}
@@ -74,9 +74,8 @@ func setSession(
 	log.Printf("Retrieved session user: %v\n", user)
 	tokenJson, err := json.Marshal(
 		&sessionData{
-			UserID:   user.ID,
-			Token:    token,
-			Provider: provider,
+			UserID: user.ID,
+			Token:  token,
 		},
 	)
 	if err != nil {

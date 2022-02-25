@@ -19,17 +19,16 @@ func GetUser(id uuid.UUID) (*tables.User, error) {
 	return &user, err
 }
 
-var getUserByEmailQuery = `
+var getUserByNameQuery = `
 SELECT id, name
 FROM tasteit_user
-INNER JOIN user_email ON user_email.user_id=tasteit_user.id
-WHERE email=$1;
+WHERE name=$1;
 `
 
-func GetUserByEmail(email string) (*tables.User, error) {
+func GetUserByName(name string) (*tables.User, error) {
 	db := getDb()
 
 	var user tables.User
-	err := pgxscan.Get(ctx, db, &user, getUserByEmailQuery, email)
+	err := pgxscan.Get(ctx, db, &user, getUserByNameQuery, name)
 	return &user, err
 }

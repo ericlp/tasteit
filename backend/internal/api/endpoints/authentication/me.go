@@ -8,11 +8,6 @@ import (
 	"net/http"
 )
 
-type me struct {
-	Name  string `json:"name"`
-	Email string `json:"email"`
-}
-
 func Me(c *gin.Context) {
 	sessionData, err := readSession(c)
 	if err != nil {
