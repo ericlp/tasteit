@@ -15,7 +15,6 @@ type envVars struct {
 	ResetDb    bool
 
 	ImageFolder string
-	WhiteList   string
 	Secret      string
 	GinMode     string
 	Port        uint16
@@ -61,7 +60,6 @@ func loadEnvVars() {
 		ResetDb:    loadBool("reset_db"),
 
 		Secret:      loadNonEmptyString("secret"),
-		WhiteList:   loadNonEmptyString("whitelist"),
 		GinMode:     loadGinMode("GIN_MODE"),
 		Port:        loadUint16("PORT"),
 		AuthEnabled: loadBool("auth_enabled"),
