@@ -39,7 +39,7 @@ func GetRecipeBook(uniqueName string) (*models.DetailedRecipeBookJson, error) {
 		}
 	}
 
-	user, err := queries.GetUser(recipeBook.CreatedBy)
+	user, err := queries.GetUser(recipeBook.OwnedBy)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func GetRecipeBook(uniqueName string) (*models.DetailedRecipeBookJson, error) {
 func RecipesToJson(recipes []*tables.Recipe) ([]models.RecipeBookRecipeJson, error) {
 	recipeJsons := make([]models.RecipeBookRecipeJson, 0)
 	for _, recipe := range recipes {
-		author, err := queries.GetUser(recipe.CreatedBy)
+		author, err := queries.GetOwner(recipe.OwnedBy)
 		if err != nil {
 			return nil, err
 		}

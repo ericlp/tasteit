@@ -7,7 +7,7 @@ import (
 )
 
 var getTagByNameQuery = `
-SELECT id, name, description, color_red, color_green, color_blue, created_by
+SELECT id, name, description, color_red, color_green, color_blue, owned_by
 FROM tag
 WHERE name=$1
 `
@@ -21,7 +21,7 @@ func GetTagByName(name string) (*tables.Tag, error) {
 }
 
 var getTagByIdQuery = `
-SELECT id, name, description, color_red, color_green, color_blue, created_by
+SELECT id, name, description, color_red, color_green, color_blue, owned_by
 FROM tag
 WHERE id=$1
 `
@@ -35,7 +35,7 @@ func GetTagById(id uuid.UUID) (*tables.Tag, error) {
 }
 
 var getAllTagsQuery = `
-SELECT id, name, description, color_red, color_green, color_blue, created_by
+SELECT id, name, description, color_red, color_green, color_blue, owned_by
 FROM tag
 `
 

@@ -7,7 +7,7 @@ import (
 )
 
 var getUserByIdQuery = `
-SELECT id, name
+SELECT id, nick, cid
 FROM tasteit_user 
 WHERE id=$1`
 
@@ -20,12 +20,12 @@ func GetUser(id uuid.UUID) (*tables.User, error) {
 }
 
 var getUserByNameQuery = `
-SELECT id, name
+SELECT id, nick, cid
 FROM tasteit_user
-WHERE name=$1;
+WHERE cid=$1;
 `
 
-func GetUserByName(name string) (*tables.User, error) {
+func GetUserByCID(name string) (*tables.User, error) {
 	db := getDb()
 
 	var user tables.User

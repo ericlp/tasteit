@@ -22,7 +22,7 @@ func GetTags() (*TagsJson, error) {
 
 	tagJsons := make([]models.TagJson, 0)
 	for _, tag := range tags {
-		user, err := queries.GetUser(tag.CreatedBy)
+		user, err := queries.GetUser(tag.OwnedBy)
 		if err != nil {
 			return nil, err
 		}

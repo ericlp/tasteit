@@ -39,7 +39,7 @@ func GetRecipe(uniqueName string) (*models.DetailedRecipeJson, error) {
 		return nil, err
 	}
 
-	user, err := queries.GetUser(recipe.CreatedBy)
+	user, err := queries.GetUser(recipe.OwnedBy)
 	if err != nil {
 		return nil, err
 	}

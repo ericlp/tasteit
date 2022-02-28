@@ -18,7 +18,6 @@ type envVars struct {
 	Secret      string
 	GinMode     string
 	Port        uint16
-	AuthEnabled bool
 
 	GammaAuthorizationUri string
 	GammaRedirectUri      string
@@ -62,7 +61,6 @@ func loadEnvVars() {
 		Secret:      loadNonEmptyString("secret"),
 		GinMode:     loadGinMode("GIN_MODE"),
 		Port:        loadUint16("PORT"),
-		AuthEnabled: loadBool("auth_enabled"),
 		ImageFolder: loadNonEmptyString("image_folder"),
 
 		GammaAuthorizationUri: loadNonEmptyString("GAMMA_AUTHORIZATION_URI"),

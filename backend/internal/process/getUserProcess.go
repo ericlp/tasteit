@@ -14,6 +14,7 @@ func GetUserJson(id uuid.UUID) (*models.User, error) {
 
 	return &models.User{
 		Id:   user.ID,
-		Name: user.Name,
+		Nick: user.Nick,
+		CID:  user.CID,
 	}, nil
 }

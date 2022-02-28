@@ -7,7 +7,7 @@ import (
 )
 
 var getRecipeBookByNameQuery = `
-SELECT id, name, unique_name, author, created_by, deleted
+SELECT id, name, unique_name, author, owned_by, deleted
 FROM recipe_book
 WHERE unique_name=$1
 `
@@ -21,7 +21,7 @@ func GetRecipeBookByName(uniqueName string) (*tables.RecipeBook, error) {
 }
 
 var getNonDeletedBooksQuery = `
-SELECT id, name, unique_name, author, created_by, deleted
+SELECT id, name, unique_name, author, owned_by, deleted
 FROM recipe_book
 WHERE deleted=false
 `
@@ -36,7 +36,7 @@ func GetNonDeletedRecipeBooks() ([]*tables.RecipeBook, error) {
 }
 
 var getRecipeBookByIdQuery = `
-SELECT id, name, unique_name, author, created_by, deleted
+SELECT id, name, unique_name, author, owned_by, deleted
 FROM recipe_book
 WHERE id=$1
 `

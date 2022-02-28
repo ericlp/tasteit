@@ -54,7 +54,7 @@ func GetRecipeBooks() (*RecipeBooksJson, error) {
 			imageUrl = imageNameToPath(image.ID, image.Name)
 		}
 
-		user, err := queries.GetUser(book.CreatedBy)
+		user, err := queries.GetUser(book.OwnedBy)
 		if err != nil {
 			return nil, err
 		}

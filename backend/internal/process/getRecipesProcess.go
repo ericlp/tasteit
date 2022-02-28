@@ -60,7 +60,7 @@ func GetRecipes() (*RecipesJson, error) {
 			imageUrl = imageNameToPath(image.ID, image.Name)
 		}
 
-		user, err := queries.GetUser(recipe.CreatedBy)
+		user, err := queries.GetUser(recipe.OwnedBy)
 		if err != nil {
 			return nil, err
 		}
@@ -97,7 +97,7 @@ func recipeTagsToTagJsons(recipeTags []*tables.RecipeTag) (
 			return nil, err
 		}
 
-		author, err := queries.GetUser(tag.CreatedBy)
+		author, err := queries.GetUser(tag.OwnedBy)
 		if err != nil {
 			return nil, err
 		}

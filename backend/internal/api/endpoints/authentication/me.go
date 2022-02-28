@@ -2,11 +2,16 @@ package authentication
 
 import (
 	"github.com/ericlp/tasteit/backend/internal/common"
+	"github.com/ericlp/tasteit/backend/internal/models"
 	"github.com/ericlp/tasteit/backend/internal/process"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 )
+
+type MeJson struct {
+	Owners []models.Owner `json:"owners"`
+}
 
 func Me(c *gin.Context) {
 	sessionData, err := readSession(c)
@@ -16,12 +21,12 @@ func Me(c *gin.Context) {
 		return
 	}
 
-	user, err := process.GetUserJson(sessionData.UserID)
+	owners, err := process.GetOwnersJson(sessionData.UserID)
 	if err != nil {
-		log.Printf("Failed to get user from db: %v\n", err)
-		c.JSON(http.StatusInternalServerError, common.Error(common.ResponseInvalidUserId))
+		log.Printf("Failed to get user's owners from db: %v\n", err)
+		c.JSON(http.StatusInternalServerError, common.Error(common.ResponseFailedToGetOwnersOfUser))
 		return
 	}
 
-	c.JSON(http.StatusOK, common.Success(user))
+	c.JSON(http.StatusOK, common.Success(&MeJson{Owners: owners}))
 }

@@ -7,16 +7,16 @@ import (
 )
 
 var createRecipeBookCommand = `
-INSERT INTO recipe_book(name, unique_name, author, deleted, created_by)
+INSERT INTO recipe_book(name, unique_name, author, deleted, owned_by)
 				VALUES ($1,   $2, 	       $3,     false,   $4)
 RETURNING id, name, unique_name, author
 `
 
-func CreateRecipeBook(name, uniqueName, author string, createdBy uuid.UUID) (*tables.RecipeBook, error) {
+func CreateRecipeBook(name, uniqueName, author string, OwnedBy uuid.UUID) (*tables.RecipeBook, error) {
 	db := getDb()
 
 	var recipeBook tables.RecipeBook
-	err := pgxscan.Get(ctx, db, &recipeBook, createRecipeBookCommand, name, uniqueName, author, createdBy)
+	err := pgxscan.Get(ctx, db, &recipeBook, createRecipeBookCommand, name, uniqueName, author, OwnedBy)
 	return &recipeBook, err
 }
 
