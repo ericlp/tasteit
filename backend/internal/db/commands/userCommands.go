@@ -6,7 +6,7 @@ import (
 )
 
 var createUserCommand = `
-INSERT INTO vrecipes_user(name)
+INSERT INTO tasteit_user(name)
 VALUES(					  $1)
 RETURNING id, name
 `
