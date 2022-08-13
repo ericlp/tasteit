@@ -1,4 +1,4 @@
-module github.com/viddem/vrecipes/backend
+module github.com/ericlp/tasteit2/backend
 
 go 1.15
 

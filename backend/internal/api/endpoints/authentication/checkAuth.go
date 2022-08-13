@@ -1,9 +1,9 @@
 package authentication
 
 import (
+	"github.com/ericlp/tasteit2/backend/internal/common"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/viddem/vrecipes/backend/internal/common"
 	"log"
 	"net/http"
 )

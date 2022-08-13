@@ -1,10 +1,10 @@
 package process
 
 import (
+	"github.com/ericlp/tasteit2/backend/internal/db/commands"
+	"github.com/ericlp/tasteit2/backend/internal/db/queries"
+	"github.com/ericlp/tasteit2/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
-	"github.com/viddem/vrecipes/backend/internal/db/commands"
-	"github.com/viddem/vrecipes/backend/internal/db/queries"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 func GetOrCreateUser(name, email, provider string) (*tables.User, error) {

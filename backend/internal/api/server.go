@@ -1,12 +1,12 @@
 package api
 
 import (
+	"github.com/ericlp/tasteit2/backend/internal/api/endpoints"
+	"github.com/ericlp/tasteit2/backend/internal/api/endpoints/authentication"
+	"github.com/ericlp/tasteit2/backend/internal/common"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	"github.com/viddem/vrecipes/backend/internal/api/endpoints"
-	"github.com/viddem/vrecipes/backend/internal/api/endpoints/authentication"
-	"github.com/viddem/vrecipes/backend/internal/common"
 	"log"
 	"net/http"
 )

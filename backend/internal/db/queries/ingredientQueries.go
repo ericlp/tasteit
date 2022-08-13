@@ -1,8 +1,8 @@
 package queries
 
 import (
+	"github.com/ericlp/tasteit2/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 var getIngredientByNameQuery = `SELECT name FROM ingredient WHERE name=$1`
