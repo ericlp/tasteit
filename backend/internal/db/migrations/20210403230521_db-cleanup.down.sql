@@ -6,5 +6,5 @@ ALTER TABLE recipe_ingredient
     ALTER COLUMN recipe_id DROP NOT NULL,
     ALTER COLUMN ingredient_name DROP NOT NULL;
 
-ALTER TABLE IF EXISTS vrecipes_user
+ALTER TABLE IF EXISTS tasteit_user
     RENAME TO "user";
