@@ -8,7 +8,7 @@ import (
 
 var getUserByIdQuery = `
 SELECT id, name
-FROM vrecipes_user 
+FROM tasteit_user 
 WHERE id=$1`
 
 func GetUser(id uuid.UUID) (*tables.User, error) {
@@ -21,8 +21,8 @@ func GetUser(id uuid.UUID) (*tables.User, error) {
 
 var getUserByEmailQuery = `
 SELECT id, name
-FROM vrecipes_user
-INNER JOIN user_email ON user_email.user_id=vrecipes_user.id
+FROM tasteit_user
+INNER JOIN user_email ON user_email.user_id=tasteit_user.id
 WHERE email=$1;
 `
 
@@ -35,9 +35,9 @@ func GetUserByEmail(email string) (*tables.User, error) {
 }
 
 var GetAllUsersWithRecipeQuery = `
-SELECT DISTINCT vrecipes_user.id, vrecipes_user.name
-FROm vrecipes_user
-INNER JOIN recipe ON recipe.created_by=vrecipes_user.id
+SELECT DISTINCT tasteit_user.id, tasteit_user.name
+FROm tasteit_user
+INNER JOIN recipe ON recipe.created_by=tasteit_user.id
 `
 
 func GetAllUsersWithRecipe() ([]tables.User, error) {
