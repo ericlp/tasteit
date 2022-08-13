@@ -12,22 +12,8 @@ func GetUserJson(id uuid.UUID) (*models.User, error) {
 		return nil, err
 	}
 
-	emails, err := queries.GetEmailsForUser(user.ID)
-	if err != nil {
-		return nil, err
-	}
-
-	var emailJsons []models.UserEmail
-	for _, email := range emails {
-		emailJsons = append(emailJsons, models.UserEmail{
-			Email:    email.Email,
-			Provider: email.Provider,
-		})
-	}
-
 	return &models.User{
-		Id:     user.ID,
-		Name:   user.Name,
-		Emails: emailJsons,
+		Id:   user.ID,
+		Name: user.Name,
 	}, nil
 }
