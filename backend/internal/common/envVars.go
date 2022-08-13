@@ -17,29 +17,17 @@ type envVars struct {
 	ImageFolder string
 	WhiteList   string
 	Secret      string
-	GinMode		string
+	GinMode     string
 	Port        uint16
 	AuthEnabled bool
 
-	GithubClientId          string
-	GithubSecret            string
-	GithubRedirectUri       string
-	GithubUserEmailEndpoint string
-	GithubUserEndpoint      string
-
-	GoogleClientId    string
-	GoogleSecret      string
-	GoogleRedirectUri string
-
-	FacebookClientId    string
-	FacebookSecret      string
-	FacebookRedirectUri string
-	FacebookMeUri       string
-
-	MicrosoftClientId    string
-	MicrosoftSecret      string
-	MicrosoftRedirectUri string
-	MicrosoftMeUri       string
+	GammaAuthorizationUri string
+	GammaRedirectUri      string
+	GammaTokenUri         string
+	GammaMeUri            string
+	GammaSecret           string
+	GammaClientID         string
+	GammaLogoutURL        string
 }
 
 var ginModes = []string{
@@ -74,30 +62,18 @@ func loadEnvVars() {
 
 		Secret:      loadNonEmptyString("secret"),
 		WhiteList:   loadNonEmptyString("whitelist"),
-		GinMode:	loadGinMode("GIN_MODE"),
+		GinMode:     loadGinMode("GIN_MODE"),
 		Port:        loadUint16("PORT"),
 		AuthEnabled: loadBool("auth_enabled"),
 		ImageFolder: loadNonEmptyString("image_folder"),
 
-		GithubClientId:          loadNonEmptyString("github_client_id"),
-		GithubSecret:            loadNonEmptyString("github_secret"),
-		GithubRedirectUri:       loadNonEmptyString("github_redirect_uri"),
-		GithubUserEmailEndpoint: loadNonEmptyString("github_user_email_endpoint"),
-		GithubUserEndpoint:      loadNonEmptyString("github_user_endpoint"),
-
-		GoogleClientId:    loadNonEmptyString("google_client_id"),
-		GoogleSecret:      loadNonEmptyString("google_secret"),
-		GoogleRedirectUri: loadNonEmptyString("google_redirect_uri"),
-
-		FacebookClientId:    loadNonEmptyString("facebook_client_id"),
-		FacebookSecret:      loadNonEmptyString("facebook_secret"),
-		FacebookRedirectUri: loadNonEmptyString("facebook_redirect_uri"),
-		FacebookMeUri:       loadNonEmptyString("facebook_me_uri"),
-
-		MicrosoftClientId:    loadNonEmptyString("microsoft_client_id"),
-		MicrosoftSecret:      loadNonEmptyString("microsoft_secret"),
-		MicrosoftRedirectUri: loadNonEmptyString("microsoft_redirect_uri"),
-		MicrosoftMeUri:       loadNonEmptyString("microsoft_me_uri"),
+		GammaAuthorizationUri: loadNonEmptyString("GAMMA_AUTHORIZATION_URI"),
+		GammaRedirectUri:      loadNonEmptyString("GAMMA_REDIRECT_URI"),
+		GammaTokenUri:         loadNonEmptyString("GAMMA_TOKEN_URI"),
+		GammaMeUri:            loadNonEmptyString("GAMMA_ME_URI"),
+		GammaSecret:           loadNonEmptyString("GAMMA_SECRET"),
+		GammaClientID:         loadNonEmptyString("GAMMA_CLIENT_ID"),
+		GammaLogoutURL:        loadNonEmptyString("GAMMA_LOGOUT_URL"),
 	}
 }
 

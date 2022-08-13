@@ -62,29 +62,11 @@ func Init() {
 		auth := api.Group("/auth")
 		{
 			auth.POST("/logout", authentication.Logout)
-
-			github := auth.Group("/github")
+			
+			gamma := auth.Group("/account")
 			{
-				github.GET("", authentication.GithubInitAuth)
-				github.GET("/callback", authentication.GithubCallback)
-			}
-
-			google := auth.Group("/google")
-			{
-				google.GET("", authentication.GoogleInitAuth)
-				google.GET("/callback", authentication.GoogleCallback)
-			}
-
-			facebook := auth.Group("/facebook")
-			{
-				facebook.GET("", authentication.FacebookInitAuth)
-				facebook.GET("/callback", authentication.FacebookCallback)
-			}
-
-			microsoft := auth.Group("/microsoft")
-			{
-				microsoft.GET("", authentication.MicrosoftInitAuth)
-				microsoft.GET("/callback", authentication.MicrosoftCallback)
+				gamma.GET("", authentication.GammaInitAuth)
+				gamma.GET("/callback", authentication.GammaCallback)
 			}
 		}
 	}
