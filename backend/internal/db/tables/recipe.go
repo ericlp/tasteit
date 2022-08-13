@@ -10,7 +10,7 @@ type Recipe struct {
 	OvenTemp      int
 	EstimatedTime int
 	Deleted       bool
-	CreatedBy     uuid.UUID
+	OwnedBy       uuid.UUID
 }
 
 func (_ Recipe) StructName() string {

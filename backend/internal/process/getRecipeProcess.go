@@ -39,7 +39,7 @@ func GetRecipe(uniqueName string) (*models.DetailedRecipeJson, error) {
 		return nil, err
 	}
 
-	user, err := queries.GetUser(recipe.CreatedBy)
+	owner, err := queries.GetOwner(recipe.OwnedBy)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func GetRecipe(uniqueName string) (*models.DetailedRecipeJson, error) {
 		Steps:           RecipeStepsToJson(steps),
 		Ingredients:     RecipeIngredientsToJson(ingredients),
 		Images:          RecipeImagesToJson(images),
-		Author:          *user,
+		Author:          *owner,
 		Tags:            tags,
 	}, nil
 }

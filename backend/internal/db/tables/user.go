@@ -4,7 +4,8 @@ import "github.com/google/uuid"
 
 type User struct {
 	ID   uuid.UUID `json:"id"`
-	Name string    `json:"name"`
+	Nick string    `json:"nick"`
+	CID  string    `JSON:"cid"`
 }
 
 func (_ User) StructName() string {

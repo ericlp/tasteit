@@ -7,15 +7,15 @@ import (
 )
 
 var createTagCommand = `
-INSERT INTO tag(name, description, color_red, color_green, color_blue, created_by)
+INSERT INTO tag(name, description, color_red, color_green, color_blue, owned_by)
 		 VALUES($1,   $2,		   $3, 		  $4, 		   $5, 		   $6)
-RETURNING id, description, color_red, color_green, color_blue, created_by
+RETURNING id, description, color_red, color_green, color_blue, owned_by
 `
 
 func CreateTag(
 	name, description string,
 	colorRed, colorGreen, colorBlue uint8,
-	createdBy uuid.UUID,
+	OwnedBy uuid.UUID,
 ) (*tables.Tag, error) {
 	db := getDb()
 
@@ -30,7 +30,7 @@ func CreateTag(
 		colorRed,
 		colorGreen,
 		colorBlue,
-		createdBy,
+		OwnedBy,
 	)
 	return &tag, err
 }
