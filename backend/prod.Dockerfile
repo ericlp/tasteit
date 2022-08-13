@@ -14,7 +14,7 @@ RUN go build -o tasteit2 ./cmd/tasteit2/main.go
 
 FROM alpine
 
-COPY --from=builder /app/vrecipes /vrecipes
+COPY --from=builder /app/tasteit2 /tasteit2
 COPY ./internal/db/migrations /internal/db/migrations
 
-ENTRYPOINT ["/vrecipes"]
+ENTRYPOINT ["/tasteit2"]
