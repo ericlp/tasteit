@@ -2,9 +2,9 @@ package validation
 
 import (
 	"errors"
+	"github.com/ericlp/tasteit2/backend/internal/db/queries"
+	"github.com/ericlp/tasteit2/backend/internal/models"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/queries"
-	"github.com/viddem/vrecipes/backend/internal/models"
 )
 
 var ErrInvalidStepNumbers = errors.New("the provided step values does not follow a continous scale from 0 -> number of steps")

@@ -3,10 +3,10 @@ package process
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/viddem/vrecipes/backend/internal/common"
-	"github.com/viddem/vrecipes/backend/internal/db/commands"
-	"github.com/viddem/vrecipes/backend/internal/models"
-	"github.com/viddem/vrecipes/backend/internal/validation"
+	"github.com/ericlp/tasteit2/backend/internal/common"
+	"github.com/ericlp/tasteit2/backend/internal/db/commands"
+	"github.com/ericlp/tasteit2/backend/internal/models"
+	"github.com/ericlp/tasteit2/backend/internal/validation"
 	"os"
 )
 

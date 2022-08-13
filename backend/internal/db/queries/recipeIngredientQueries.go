@@ -1,9 +1,9 @@
 package queries
 
 import (
+	"github.com/ericlp/tasteit2/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 var getIngredientsForRecipeQuery = `
