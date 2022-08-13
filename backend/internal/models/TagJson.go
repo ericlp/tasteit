@@ -6,10 +6,10 @@ import (
 )
 
 type TagJson struct {
-	ID          uuid.UUID   `json:"id"`
-	Name        string      `json:"name"`
-	Description string      `json:"description"`
-	Color       ColorJson   `json:"color"`
-	RecipeCount uint64      `json:"recipeCount"`
-	Author      tables.User `json:"author"`
+	ID          uuid.UUID    `json:"id"`
+	Name        string       `json:"name"`
+	Description string       `json:"description"`
+	Color       ColorJson    `json:"color"`
+	RecipeCount uint64       `json:"recipeCount"`
+	Author      tables.Owner `json:"author"`
 }

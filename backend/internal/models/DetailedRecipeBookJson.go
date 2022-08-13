@@ -9,7 +9,7 @@ type DetailedRecipeBookJson struct {
 	ID         uuid.UUID              `json:"id"`
 	Name       string                 `json:"name"`
 	UniqueName string                 `json:"uniqueName"`
-	UploadedBy tables.User            `json:"uploadedBy"`
+	UploadedBy tables.Owner           `json:"uploadedBy"`
 	Author     string                 `json:"author"`
 	Recipes    []RecipeBookRecipeJson `json:"recipes"`
 	Image      *ImageJson             `json:"image"`

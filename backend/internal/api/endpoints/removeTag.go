@@ -15,7 +15,7 @@ func RemoveTag(c *gin.Context) {
 		return
 	}
 
-	err = validateUserAuthorized(c, tag.CreatedBy)
+	err = validateOwnerAuthorized(c, tag.OwnedBy)
 	if err != nil {
 		log.Printf("Failed to authorize user: %v\n", err)
 		c.JSON(http.StatusForbidden, common.Error(common.ResponseIncorrectUser))

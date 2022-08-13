@@ -7,12 +7,12 @@ import (
 )
 
 var createRecipeBookCommand = `
-INSERT INTO recipe_book(name, unique_name, author, deleted, created_by)
+INSERT INTO recipe_book(name, unique_name, author, deleted, owned_by)
 				VALUES ($1,   $2, 	       '',     false,   $3)
 RETURNING id, name, unique_name, author
 `
 
-func CreateRecipeBook(name, uniqueName string, createdBy uuid.UUID) (
+func CreateRecipeBook(name, uniqueName string, OwnedBy uuid.UUID) (
 	*tables.RecipeBook,
 	error,
 ) {
@@ -26,7 +26,7 @@ func CreateRecipeBook(name, uniqueName string, createdBy uuid.UUID) (
 		createRecipeBookCommand,
 		name,
 		uniqueName,
-		createdBy,
+		OwnedBy,
 	)
 	return &recipeBook, err
 }

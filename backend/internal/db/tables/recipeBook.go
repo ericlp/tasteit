@@ -7,6 +7,6 @@ type RecipeBook struct {
 	Name       string
 	UniqueName string
 	Author     string
-	CreatedBy  uuid.UUID
+	OwnedBy    uuid.UUID
 	Deleted    bool
 }

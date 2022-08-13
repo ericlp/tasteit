@@ -32,7 +32,7 @@ func EditRecipeBook(c *gin.Context) {
 		return
 	}
 
-	err = validateUserAuthorized(c, oldRecipeBook.CreatedBy)
+	err = validateOwnerAuthorized(c, oldRecipeBook.OwnedBy)
 	if err != nil {
 		log.Printf("User not authorized to edit recipebook: %v\n", err)
 		c.JSON(http.StatusForbidden, common.Error(common.ResponseIncorrectUser))
