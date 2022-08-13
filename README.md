@@ -1,4 +1,4 @@
-# Vrecipes
+# TasteIT2
 
 A recipe management website.
 
@@ -18,7 +18,7 @@ The steps to setup the backend is as follows (all of these assume that you are i
 1. Create a `whitelist.json` (path can be determined by the `whitelist` environment variable), 
    this file describes which emails are allowed for oauth2 login, see [below](#whitelist) for the schema for this file.
 1. Either setup oauth2 login using one of the supported providers (github/facebook/microsoft/google) or set the `auth_enabled` environment variable to `false`.
-1. Run the main method in `backend/cmd/vrecipes/main.go`.
+1. Run the main method in `backend/cmd/tasteit2/main.go`.
 
 ### Makefile
 In the root folder there is also a Makefile with the following commands:
@@ -28,7 +28,7 @@ In the root folder there is also a Makefile with the following commands:
 ### Migrations
 To update the schema for the database you need access to the migrations.
 1. `go get "github.com/golang-migrate/migrate/v4"`
-2. `export POSTGRESQL_URL='postgres://vrecipes:password@localhost:5432/vrecipes?sslmode=disable'`  
+2. `export POSTGRESQL_URL='postgres://tasteit2:password@localhost:5432/tasteit2?sslmode=disable'`  
 The following is an example for how to create a set of up and down migrations, you can then edit the contents of the new `.sql` files.  
 3. `migrate -database ${POSTGRESQL_URL} -path db/migrations create -ext sql -dir db/migrations favorites`  
 This is how you then interact with the migrations, for COMMANDS see `migrate help`.  
