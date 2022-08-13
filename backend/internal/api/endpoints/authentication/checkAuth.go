@@ -11,9 +11,9 @@ import (
 func CheckAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		envVars := common.GetEnvVars()
-		if envVars.AuthEnabled == false && envVars.GinMode == "debug" {
+		if envVars.GinMode == "debug" {
 			log.Printf("Setting test session\n")
-			err := setSession(c, "test", "test", "test", nil)
+			err := setSession(c, "test", nil)
 			if err != nil {
 				log.Printf("Failed to set test session: %v", err)
 				c.JSON(http.StatusInternalServerError, "failed_to_set_test_session")
