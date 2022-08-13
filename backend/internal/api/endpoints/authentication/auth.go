@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/ericlp/tasteit2/backend/internal/common"
+	"github.com/ericlp/tasteit2/backend/internal/models"
 	"github.com/ericlp/tasteit2/backend/internal/process"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -17,9 +18,8 @@ import (
 )
 
 type sessionData struct {
-	UserID   uuid.UUID     `json:"userId"`
-	Token    *oauth2.Token `json:"token"`
-	Provider string        `json:"provider"`
+	UserID uuid.UUID     `json:"userId"`
+	Token  *oauth2.Token `json:"token"`
 }
 
 var (
@@ -63,10 +63,10 @@ func initAuth(c *gin.Context, config *oauth2.Config) {
 
 func setSession(
 	c *gin.Context,
-	name string,
+	gammaUser *models.GammaMe,
 	token *oauth2.Token,
 ) error {
-	user, err := process.GetOrCreateUser(name)
+	user, err := process.GetOrSetupUser(gammaUser)
 	if err != nil {
 		return err
 	}

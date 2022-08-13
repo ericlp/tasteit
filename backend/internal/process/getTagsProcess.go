@@ -22,7 +22,7 @@ func GetTags() (*TagsJson, error) {
 
 	tagJsons := make([]models.TagJson, 0)
 	for _, tag := range tags {
-		user, err := queries.GetUser(tag.CreatedBy)
+		owner, err := queries.GetOwner(tag.OwnedBy)
 		if err != nil {
 			return nil, err
 		}
@@ -43,7 +43,7 @@ func GetTags() (*TagsJson, error) {
 					B: &tag.ColorBlue,
 				},
 				RecipeCount: recipeCount,
-				Author:      *user,
+				Author:      *owner,
 			},
 		)
 	}

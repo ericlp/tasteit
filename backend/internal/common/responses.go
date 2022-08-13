@@ -57,4 +57,5 @@ const (
 	ResponseTagNotFound                 = "tag_not_found"
 	ResponseFailedToDeleteTag           = "failed_to_delete_tag"
 	ResponseFailedToEditTag             = "failed_to_edit_tag"
+	ResponseFailedToGetOwnersOfUser     = "failed_to_get_owners_of_user"
 )
