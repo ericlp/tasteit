@@ -1,8 +1,8 @@
 package process
 
 import (
-	"github.com/viddem/vrecipes/backend/internal/db/queries"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
+	"github.com/ericlp/tasteit2/backend/internal/db/queries"
+	"github.com/ericlp/tasteit2/backend/internal/db/tables"
 )
 
 type AuthorsJson struct {

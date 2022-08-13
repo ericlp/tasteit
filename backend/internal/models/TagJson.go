@@ -1,8 +1,8 @@
 package models
 
 import (
+	"github.com/ericlp/tasteit2/backend/internal/db/tables"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
 )
 
 type TagJson struct {

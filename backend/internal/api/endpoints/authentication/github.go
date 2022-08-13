@@ -3,8 +3,8 @@ package authentication
 import (
 	"errors"
 	"fmt"
+	"github.com/ericlp/tasteit2/backend/internal/common"
 	"github.com/gin-gonic/gin"
-	"github.com/viddem/vrecipes/backend/internal/common"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/github"
 	"log"
@@ -88,7 +88,7 @@ func GithubCallback(c *gin.Context) {
 				abort(c)
 				return
 			}
-			
+
 			c.Redirect(http.StatusTemporaryRedirect, "/")
 			return
 		}

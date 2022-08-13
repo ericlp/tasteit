@@ -2,10 +2,10 @@ package endpoints
 
 import (
 	"errors"
+	"github.com/ericlp/tasteit2/backend/internal/common"
+	"github.com/ericlp/tasteit2/backend/internal/models"
+	"github.com/ericlp/tasteit2/backend/internal/process"
 	"github.com/gin-gonic/gin"
-	"github.com/viddem/vrecipes/backend/internal/common"
-	"github.com/viddem/vrecipes/backend/internal/models"
-	"github.com/viddem/vrecipes/backend/internal/process"
 	"log"
 	"net/http"
 )

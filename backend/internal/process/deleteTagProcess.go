@@ -1,8 +1,8 @@
 package process
 
 import (
-	"github.com/viddem/vrecipes/backend/internal/db/commands"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
+	"github.com/ericlp/tasteit2/backend/internal/db/commands"
+	"github.com/ericlp/tasteit2/backend/internal/db/tables"
 )
 
 func DeleteTag(tag *tables.Tag) error {
