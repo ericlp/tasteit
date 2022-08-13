@@ -71,14 +71,27 @@ func validateNewRecipe(c *gin.Context) (*models.NewRecipeJson, error) {
 
 var ErrUserNotAuthorized = errors.New("user not authorized")
 
-func validateUserAuthorized(c *gin.Context, userId uuid.UUID) error {
+func validateOwnerAuthorized(c *gin.Context, userId uuid.UUID) error {
 	user, err := getSessionUser(c)
 	if err != nil {
 		return err
 	}
 
-	if user.ID == userId {
+	owners, err := queries.GetOwnersByUser(user.ID)
+	if err != nil {
+		return err
+	}
+
+	isAuthorized := false
+	for _, owner := range owners {
+		if owner.ID == userId {
+			isAuthorized = true
+		}
+	}
+
+	if isAuthorized {
 		return nil
+
 	}
 	return ErrUserNotAuthorized
 }
