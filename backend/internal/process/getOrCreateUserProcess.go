@@ -7,8 +7,8 @@ import (
 	"github.com/georgysavva/scany/pgxscan"
 )
 
-func GetOrCreateUser(name, email, provider string) (*tables.User, error) {
-	user, err := queries.GetUserByEmail(email)
+func GetOrCreateUser(name string) (*tables.User, error) {
+	user, err := queries.GetUserByName(name)
 	if err == nil {
 		return user, nil
 	}
@@ -22,6 +22,5 @@ func GetOrCreateUser(name, email, provider string) (*tables.User, error) {
 		return nil, err
 	}
 
-	_, err = commands.CreateUserEmail(user.ID, email, provider)
 	return user, err
 }
