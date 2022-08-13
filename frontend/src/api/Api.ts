@@ -122,17 +122,8 @@ export const Api = {
     },
   },
   user: {
-    githubLogin: () => {
-      return handleResponse(axios.get("/auth/github"), true);
-    },
-    microsoftLogin: () => {
-      return handleResponse(axios.get("/auth/microsoft"), true);
-    },
-    facebookLogin: () => {
-      return handleResponse(axios.get("/auth/facebook"), true);
-    },
-    googleLogin: () => {
-      return handleResponse(axios.get("/auth/google"), true);
+    login: () => {
+      return handleResponse(axios.get("/auth/account"), true);
     },
     logout: () => {
       return handleResponse(axios.post("/auth/logout"), false);
