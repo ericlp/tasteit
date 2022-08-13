@@ -10,7 +10,7 @@ COPY ./go.sum /app/
 RUN go mod download
 
 COPY . /app
-RUN go build -o vrecipes ./cmd/vrecipes/main.go
+RUN go build -o tasteit2 ./cmd/tasteit2/main.go
 
 FROM alpine
 

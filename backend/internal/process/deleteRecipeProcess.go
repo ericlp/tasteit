@@ -2,8 +2,8 @@ package process
 
 import (
 	"fmt"
-	"github.com/viddem/vrecipes/backend/internal/db/commands"
-	"github.com/viddem/vrecipes/backend/internal/db/tables"
+	"github.com/ericlp/tasteit2/backend/internal/db/commands"
+	"github.com/ericlp/tasteit2/backend/internal/db/tables"
 )
 
 func DeleteRecipe(recipe *tables.Recipe) error {

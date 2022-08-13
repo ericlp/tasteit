@@ -1,8 +1,8 @@
 package tables
 
 import (
+	"github.com/ericlp/tasteit2/backend/internal/common"
 	"github.com/google/uuid"
-	"github.com/viddem/vrecipes/backend/internal/common"
 )
 
 // RecipeIngredient An ingredient in a recipe
