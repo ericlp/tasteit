@@ -65,8 +65,8 @@ function MyApp({
           }}
         >
           <Head>
-            <title>Vrecipes</title>
-            <link rel="icon" href="/vrecipes_logo.png" />
+            <title>TasteIT</title>
+            <link rel="icon" href="/chef-hat.svg" />
           </Head>
 
           {modalProps && <Modal {...modalProps} />}

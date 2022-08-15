@@ -1,4 +1,4 @@
-# VRecipes nextjs frontend
+# TasteIT nextjs frontend
 
 This is a new frontend for the VRecipes recipe management service.
 
