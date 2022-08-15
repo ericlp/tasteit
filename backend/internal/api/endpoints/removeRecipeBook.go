@@ -1,8 +1,8 @@
 package endpoints
 
 import (
-	"github.com/ericlp/tasteit2/backend/internal/common"
-	"github.com/ericlp/tasteit2/backend/internal/process"
+	"github.com/ericlp/tasteit/backend/internal/common"
+	"github.com/ericlp/tasteit/backend/internal/process"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
