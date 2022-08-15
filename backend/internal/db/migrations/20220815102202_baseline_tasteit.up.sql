@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS recipe
     oven_temp      BIGINT,
     estimated_time BIGINT,
     deleted        BOOLEAN          NOT NULL,
-    created_by     uuid REFERENCES owner (id)
+    owned_by       uuid REFERENCES owner (id)
 );
 
 CREATE TABLE IF NOT EXISTS image
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS recipe_book
     unique_name TEXT             NOT NULL UNIQUE,
     author      TEXT             NOT NULL,
     deleted     BOOLEAN          NOT NULL,
-    created_by  uuid REFERENCES tasteit_user (id)
+    owned_by    uuid REFERENCES owner (id)
 );
 
 CREATE TABLE IF NOT EXISTS recipe_book_recipe
@@ -110,7 +110,7 @@ CREATE TABLE tag
     color_red   INTEGER          NOT NULL,
     color_green INTEGER          NOT NULL,
     color_blue  INTEGER          NOT NULL,
-    created_by  uuid REFERENCES tasteit_user (id),
+    owned_by    uuid REFERENCES owner (id),
     UNIQUE (name)
 );
 
