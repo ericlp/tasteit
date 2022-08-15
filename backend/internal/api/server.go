@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/ericlp/tasteit2/backend/internal/api/endpoints"
-	"github.com/ericlp/tasteit2/backend/internal/api/endpoints/authentication"
-	"github.com/ericlp/tasteit2/backend/internal/common"
+	"github.com/ericlp/tasteit/backend/internal/api/endpoints"
+	"github.com/ericlp/tasteit/backend/internal/api/endpoints/authentication"
+	"github.com/ericlp/tasteit/backend/internal/common"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
@@ -62,7 +62,7 @@ func Init() {
 		auth := api.Group("/auth")
 		{
 			auth.POST("/logout", authentication.Logout)
-			
+
 			gamma := auth.Group("/account")
 			{
 				gamma.GET("", authentication.GammaInitAuth)

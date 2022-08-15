@@ -1,4 +1,4 @@
-module github.com/ericlp/tasteit2/backend
+module github.com/ericlp/tasteit/backend
 
 go 1.15
 
