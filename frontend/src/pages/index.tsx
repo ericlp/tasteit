@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { Api } from "../api/Api";
-import { Author } from "../api/Author";
+import { Owner } from "../api/Owner";
 import { CREATE_RECIPE_ENDPOINT } from "../api/Endpoints";
 import { Me } from "../api/Me";
 import { ShortRecipe } from "../api/ShortRecipe";
@@ -34,7 +34,7 @@ import styles from "./index.module.scss";
 type HomeProps = {
   recipes?: ShortRecipe[];
   tags: Tag[];
-  authors: Author[];
+  authors: Owner[];
   error?: string;
   me?: Me;
 };
@@ -51,7 +51,7 @@ const Home = ({ recipes, error, tags, authors }: HomeProps) => {
   const [filterText, setFilterText] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState<ShortRecipe[]>([]);
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-  const [selectedAuthors, setSelectedAuthors] = useState<Author[]>([]);
+  const [selectedAuthors, setSelectedAuthors] = useState<Owner[]>([]);
 
   const [visibleRecipes, setVisibleRecipes] = useState(BASE_RECIPE_COUNT);
 

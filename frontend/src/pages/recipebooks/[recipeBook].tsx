@@ -19,6 +19,7 @@ import { useTranslations } from "../../hooks/useTranslations";
 import CardLayout from "../../layouts/CardLayout";
 
 import styles from "./[recipeBook].module.scss";
+import {isThisOwner} from "../../util/isThisOwner";
 
 interface RecipeBookProps {
   recipeBook?: RecipeBook;
@@ -94,7 +95,7 @@ const RecipeBook = ({ recipeBook, error }: RecipeBookProps) => {
               <Button
                 variant="secondary"
                 size="normal"
-                disabled={me?.id !== recipeBook.uploadedBy.id}
+                disabled={!isThisOwner(recipeBook.uploadedBy.id, me?.owners)}
                 onClick={() => {
                   openModal({
                     title: t.recipeBook.deleteModal.title,
@@ -131,7 +132,9 @@ const RecipeBook = ({ recipeBook, error }: RecipeBookProps) => {
                   <Button
                     variant="primary"
                     size="normal"
-                    disabled={me?.id !== recipeBook.uploadedBy.id}
+                    disabled={
+                      !isThisOwner(recipeBook.uploadedBy.id, me?.owners)
+                    }
                   >
                     {t.common.edit}
                   </Button>

@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import fuzzysort from "fuzzysort";
 import Image from "next/image";
 
-import { Author } from "../../../api/Author";
+import { Owner } from "../../../api/Owner";
 import { Tag } from "../../../api/Tag";
 import { useTranslations } from "../../../hooks/useTranslations";
 import { assertIsNode } from "../../../util/assertIsNode";
@@ -213,7 +213,7 @@ export const RenderTagFilterItemsList = (tags: Tag[]) => (
   <TagList tags={tags} noLink={true} variant={"left"} />
 );
 
-export const RenderAuthorFilterItemsList = (items: Author[]) => {
+export const RenderAuthorFilterItemsList = (items: Owner[]) => {
   const { t } = useTranslations();
 
   return (

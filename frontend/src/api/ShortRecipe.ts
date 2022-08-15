@@ -1,4 +1,4 @@
-import { Author } from "./Author";
+import { Owner } from "./Owner";
 import { Tag } from "./Tag";
 
 export interface ShortRecipe {
@@ -6,7 +6,7 @@ export interface ShortRecipe {
   name: string;
   uniqueName: string;
   imageLink: string;
-  author: Author;
+  author: Owner;
   tags: Tag[];
   estimatedTime: number;
   numberOfIngredients: number;
