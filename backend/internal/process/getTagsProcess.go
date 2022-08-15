@@ -43,7 +43,11 @@ func GetTags() (*TagsJson, error) {
 					B: &tag.ColorBlue,
 				},
 				RecipeCount: recipeCount,
-				Author:      *owner,
+				Author: models.Owner{
+					Id:     owner.ID,
+					Name:   owner.Name,
+					IsUser: owner.IsUser,
+				},
 			},
 		)
 	}

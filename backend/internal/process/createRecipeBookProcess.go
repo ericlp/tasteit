@@ -4,7 +4,6 @@ import (
 	"github.com/ericlp/tasteit/backend/internal/common"
 	"github.com/ericlp/tasteit/backend/internal/db/commands"
 	"github.com/ericlp/tasteit/backend/internal/db/queries"
-	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/ericlp/tasteit/backend/internal/models"
 	"github.com/georgysavva/scany/pgxscan"
 	"github.com/google/uuid"
@@ -13,7 +12,6 @@ import (
 
 func CreateNewRecipeBook(
 	recipeBookJson *models.NewRecipeBookJson,
-	user *tables.User,
 ) (string, error) {
 	uniqueName, err := generateUniqueBookName(recipeBookJson.Name)
 	if err != nil {
@@ -23,7 +21,7 @@ func CreateNewRecipeBook(
 	recipeBook, err := commands.CreateRecipeBook(
 		recipeBookJson.Name,
 		uniqueName,
-		user.ID,
+		recipeBookJson.OwnerId,
 	)
 	if err != nil {
 		return "", err

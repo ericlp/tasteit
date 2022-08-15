@@ -9,7 +9,7 @@ import (
 	"github.com/georgysavva/scany/pgxscan"
 )
 
-func CreateNewTag(tagJson *models.NewTagJson, user *tables.User) (*tables.Tag, error) {
+func CreateNewTag(tagJson *models.NewTagJson) (*tables.Tag, error) {
 	_, err := queries.GetTagByName(tagJson.Name)
 	if err != nil {
 		if pgxscan.NotFound(err) == false {
@@ -19,6 +19,6 @@ func CreateNewTag(tagJson *models.NewTagJson, user *tables.User) (*tables.Tag, e
 		return nil, common.ErrNameTaken
 	}
 
-	tag, err := commands.CreateTag(tagJson.Name, tagJson.Description, *tagJson.Color.R, *tagJson.Color.G, *tagJson.Color.B, user.ID)
+	tag, err := commands.CreateTag(tagJson.Name, tagJson.Description, *tagJson.Color.R, *tagJson.Color.G, *tagJson.Color.B, tagJson.OwnerId)
 	return tag, err
 }
