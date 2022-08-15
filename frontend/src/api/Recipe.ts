@@ -1,4 +1,4 @@
-import { Author } from "./Author";
+import { Owner } from "./Owner";
 import { Image } from "./Image";
 import { Ingredient } from "./Ingredient";
 import { Step } from "./Step";
@@ -14,7 +14,7 @@ export interface Recipe {
   steps: Step[];
   ingredients: Ingredient[];
   images: Image[];
-  author: Author;
+  author: Owner;
   tags: Tag[];
   portions: number;
 }

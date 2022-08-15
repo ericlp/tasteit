@@ -1,4 +1,4 @@
-import { Author } from "./Author";
+import { Owner } from "./Owner";
 import { RGBColor } from "./Color";
 
 export interface Tag {
@@ -7,5 +7,5 @@ export interface Tag {
   description: string;
   color: RGBColor;
   recipeCount: number;
-  author: Author;
+  author: Owner;
 }

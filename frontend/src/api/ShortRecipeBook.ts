@@ -1,4 +1,4 @@
-import { Author } from "./Author";
+import { Owner } from "./Owner";
 
 export interface ShortRecipeBook {
   id: string;
@@ -6,5 +6,5 @@ export interface ShortRecipeBook {
   uniqueName: string;
   author: string;
   imageLink: string;
-  uploadedBy: Author;
+  uploadedBy: Owner;
 }
