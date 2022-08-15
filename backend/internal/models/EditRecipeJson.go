@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/ericlp/tasteit2/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/google/uuid"
 	"math"
 )

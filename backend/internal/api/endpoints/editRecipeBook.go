@@ -2,12 +2,12 @@ package endpoints
 
 import (
 	"errors"
-	"github.com/ericlp/tasteit2/backend/internal/common"
-	"github.com/ericlp/tasteit2/backend/internal/db/queries"
-	"github.com/ericlp/tasteit2/backend/internal/db/tables"
-	"github.com/ericlp/tasteit2/backend/internal/models"
-	"github.com/ericlp/tasteit2/backend/internal/process"
-	"github.com/ericlp/tasteit2/backend/internal/validation"
+	"github.com/ericlp/tasteit/backend/internal/common"
+	"github.com/ericlp/tasteit/backend/internal/db/queries"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/models"
+	"github.com/ericlp/tasteit/backend/internal/process"
+	"github.com/ericlp/tasteit/backend/internal/validation"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"log"
