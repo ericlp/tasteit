@@ -3,6 +3,7 @@ package process
 import (
 	"github.com/ericlp/tasteit/backend/internal/db/queries"
 	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/models"
 	"github.com/georgysavva/scany/pgxscan"
 	"github.com/google/uuid"
 )
@@ -17,7 +18,7 @@ type ShortRecipeBookJson struct {
 	UniqueName string       `json:"uniqueName"`
 	Author     string       `json:"author"`
 	ImageLink  string       `json:"imageLink"`
-	UploadedBy tables.Owner `json:"uploadedBy"`
+	UploadedBy models.Owner `json:"uploadedBy"`
 }
 
 func toShortRecipeBookJson(recipeBook *tables.RecipeBook, owner *tables.Owner, imageUrl string) ShortRecipeBookJson {
@@ -27,7 +28,11 @@ func toShortRecipeBookJson(recipeBook *tables.RecipeBook, owner *tables.Owner, i
 		UniqueName: recipeBook.UniqueName,
 		Author:     recipeBook.Author,
 		ImageLink:  imageUrl,
-		UploadedBy: *owner,
+		UploadedBy: models.Owner{
+			Id:     owner.ID,
+			Name:   owner.Name,
+			IsUser: owner.IsUser,
+		},
 	}
 }
 

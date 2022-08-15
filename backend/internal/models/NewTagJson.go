@@ -1,9 +1,12 @@
 package models
 
+import "github.com/google/uuid"
+
 type NewTagJson struct {
 	Name        string     `json:"name" binding:"required"`
 	Description string     `json:"description"`
 	Color       *ColorJson `json:"color" binding:"required"`
+	OwnerId     uuid.UUID  `json:"ownerId" binding:"required"`
 }
 
 type ColorJson struct {

@@ -64,8 +64,12 @@ func GetRecipe(uniqueName string) (*models.DetailedRecipeJson, error) {
 		Steps:           RecipeStepsToJson(steps),
 		Ingredients:     RecipeIngredientsToJson(ingredients),
 		Images:          RecipeImagesToJson(images),
-		Author:          *owner,
-		Tags:            tags,
+		Author: models.Owner{
+			Id:     owner.ID,
+			Name:   owner.Name,
+			IsUser: owner.IsUser,
+		},
+		Tags: tags,
 	}, nil
 }
 

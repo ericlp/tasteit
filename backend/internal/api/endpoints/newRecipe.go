@@ -28,17 +28,7 @@ func NewRecipe(c *gin.Context) {
 		return
 	}
 
-	user, err := getSessionUser(c)
-	if err != nil {
-		log.Printf("Failed to retrieve user from context: %v\n", err)
-		c.JSON(
-			http.StatusInternalServerError,
-			common.Error(common.ResponseInvalidUserId),
-		)
-		return
-	}
-
-	uniqueName, err := process.CreateNewRecipe(recipeJson, user)
+	uniqueName, err := process.CreateNewRecipe(recipeJson)
 	if err != nil {
 		if errors.Is(err, common.ErrNameTaken) {
 			log.Printf("Tried to create duplicate recipe")

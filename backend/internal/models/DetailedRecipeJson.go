@@ -1,7 +1,6 @@
 package models
 
 import (
-	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/google/uuid"
 )
 
@@ -15,7 +14,7 @@ type DetailedRecipeJson struct {
 	Steps           []RecipeStepJson       `json:"steps"`
 	Ingredients     []RecipeIngredientJson `json:"ingredients"`
 	Images          []ImageJson            `json:"images"`
-	Author          tables.Owner           `json:"author"`
+	Author          Owner                  `json:"author"`
 	Tags            []TagJson              `json:"tags"`
 }
 

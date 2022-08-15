@@ -2,11 +2,11 @@ package process
 
 import (
 	"github.com/ericlp/tasteit/backend/internal/db/queries"
-	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/models"
 )
 
 type AuthorsJson struct {
-	Authors []tables.Owner `json:"authors"`
+	Authors []models.Owner `json:"authors"`
 }
 
 func GetAllAuthors() (*AuthorsJson, error) {
@@ -15,9 +15,14 @@ func GetAllAuthors() (*AuthorsJson, error) {
 		return nil, err
 	}
 
-	if authors == nil {
-		authors = make([]tables.Owner, 0)
+	authorsJson := make([]models.Owner, 0)
+	for _, author := range authors {
+		authorsJson = append(authorsJson, models.Owner{
+			Id:     author.ID,
+			Name:   author.Name,
+			IsUser: author.IsUser,
+		})
 	}
 
-	return &AuthorsJson{Authors: authors}, nil
+	return &AuthorsJson{Authors: authorsJson}, nil
 }
