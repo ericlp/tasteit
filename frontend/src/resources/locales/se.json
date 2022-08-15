@@ -1,6 +1,6 @@
 {
   "header": {
-    "pageTitle": "VRecept",
+    "pageTitle": "TasteIT",
     "loginButton": "Logga in",
     "logoutButton": "Logga ut",
     "recipes": "Recept",
@@ -117,8 +117,7 @@
     "no": "Nej",
     "edit": "Ändra",
     "remove": "Ta bort",
-    "unsavedChanges": "Du har osparade ändringar",
-    "logoAltText": "Vrecepts logotyp"
+    "unsavedChanges": "Du har osparade ändringar"
   },
   "errors": {
     "default": "Ett okänt fel har inträffat",
@@ -159,7 +158,7 @@
     "no_tags": "Det finns inga taggar"
   },
   "footer": {
-    "developedBy": "VRecipes utvecklades med ❤ av Vidde & LP",
+    "developedBy": "TasteIT utvecklades med ❤ av Vidde & LP",
     "sourceCode": "Källkod"
   }
 }

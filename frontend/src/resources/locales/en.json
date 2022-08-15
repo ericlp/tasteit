@@ -1,6 +1,6 @@
 {
   "header": {
-    "pageTitle": "VRecipes",
+    "pageTitle": "TasteIT",
     "loginButton": "Sign in",
     "logoutButton": "Sign out",
     "recipes": "Recipes",
@@ -117,8 +117,7 @@
     "no": "No",
     "edit": "Edit",
     "remove": "Delete",
-    "unsavedChanges": "You have unsaved changes",
-    "logoAltText": "Vrecipe's logo"
+    "unsavedChanges": "You have unsaved changes"
   },
   "errors": {
     "default": "An unknown error has occured",
@@ -159,7 +158,7 @@
     "no_tags": "There are no tags"
   },
   "footer": {
-    "developedBy": "VRecipes was developed with ❤ by Vidde & LP",
+    "developedBy": "TasteIT was developed with ❤ by Vidde & LP",
     "sourceCode": "Source Code"
   }
 }
