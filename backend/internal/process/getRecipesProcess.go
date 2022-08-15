@@ -17,7 +17,7 @@ type ShortRecipeJson struct {
 	Name                string           `json:"name"`
 	UniqueName          string           `json:"uniqueName"`
 	ImageLink           string           `json:"imageLink"`
-	Author              tables.Owner     `json:"author"`
+	Author              models.Owner     `json:"author"`
 	Tags                []models.TagJson `json:"tags"`
 	EstimatedTime       int              `json:"estimatedTime"`
 	NumberOfIngredients int              `json:"numberOfIngredients"`
@@ -31,11 +31,15 @@ func toShortRecipeJson(
 	numberOfIngredients int,
 ) ShortRecipeJson {
 	return ShortRecipeJson{
-		ID:                  recipe.ID,
-		Name:                recipe.Name,
-		UniqueName:          recipe.UniqueName,
-		ImageLink:           imageUrl,
-		Author:              *owner,
+		ID:         recipe.ID,
+		Name:       recipe.Name,
+		UniqueName: recipe.UniqueName,
+		ImageLink:  imageUrl,
+		Author: models.Owner{
+			Id:     owner.ID,
+			Name:   owner.Name,
+			IsUser: owner.IsUser,
+		},
 		Tags:                tags,
 		EstimatedTime:       recipe.EstimatedTime,
 		NumberOfIngredients: numberOfIngredients,
@@ -128,7 +132,11 @@ func recipeTagsToTagJsons(recipeTags []*tables.RecipeTag) (
 					B: &tag.ColorBlue,
 				},
 				RecipeCount: recipesCount,
-				Author:      *owner,
+				Author: models.Owner{
+					Id:     owner.ID,
+					Name:   owner.Name,
+					IsUser: owner.IsUser,
+				},
 			},
 		)
 	}

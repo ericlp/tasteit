@@ -25,6 +25,6 @@ func CheckAuth() gin.HandlerFunc {
 			return
 		}
 
-		c.Set("userId", sessionData.UserID)
+		c.Set("userId", sessionData.User.Id)
 	}
 }
