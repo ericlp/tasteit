@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import encodeurl from "encodeurl";
 import getConfig from "next/config";
 
-import { Author } from "./Author";
+import { Owner } from "./Owner";
 import { EditRecipe } from "./EditRecipe";
 import { EditRecipeBook } from "./EditRecipeBook";
 import { IMAGE_BASE_ENDPOINT, TAGS_BASE_ENDPOINT } from "./Endpoints";
@@ -48,7 +48,7 @@ export const Api = {
   authors: {
     getAll: () => {
       return handleResponse(
-        axios.get<RawApiResponse<{ authors: Author[] }>>("/authors"),
+        axios.get<RawApiResponse<{ authors: Owner[] }>>("/authors"),
         false
       );
     },
@@ -66,10 +66,11 @@ export const Api = {
         false
       );
     },
-    create: (name: string) => {
+    create: (name: string, ownerId: string) => {
       return handleResponse(
         axios.post<RawApiResponse<UniqueName>>("/recipes", {
           name: name,
+          ownerId: ownerId,
         }),
         true
       );
@@ -100,10 +101,11 @@ export const Api = {
         false
       );
     },
-    create: (name: string) => {
+    create: (name: string, ownerId: string) => {
       return handleResponse(
         axios.post<RawApiResponse<UniqueName>>("/books", {
           name: name,
+          ownerId: ownerId,
         }),
         true
       );

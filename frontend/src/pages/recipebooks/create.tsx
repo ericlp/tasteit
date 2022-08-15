@@ -3,7 +3,9 @@ import { FormEvent, useState } from "react";
 import { Api } from "../../api/Api";
 import { EDIT_RECIPE_BOOK_BASE_ENDPOINT } from "../../api/Endpoints";
 import { Button } from "../../components/elements/Buttons/Buttons";
+import Dropdown from "../../components/elements/Dropdown/Dropdown";
 import TextField from "../../components/elements/TextField/TextField";
+import { useMe } from "../../hooks/useMe";
 import { useTranslations } from "../../hooks/useTranslations";
 import CardLayout from "../../layouts/CardLayout";
 
@@ -14,10 +16,23 @@ const CreateRecipe = () => {
   const [error, setError] = useState<string | undefined>(undefined);
   const [name, setName] = useState("");
 
+  const { me } = useMe();
+
+  const ownerOptions = (me?.owners ?? []).map((owner) => {
+    return {
+      display: owner.name,
+      value: owner.id,
+    };
+  });
+
+  const [ownerId, setOwnerId] = useState("");
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    Api.recipeBooks.create(name).then((data) => {
+    const owner = ownerId ? ownerId : ownerOptions[0].value;
+
+    Api.recipeBooks.create(name, owner).then((data) => {
       if (data.error && data.errorTranslationString) {
         setError(translate(data.errorTranslationString));
       } else {
@@ -52,6 +67,22 @@ const CreateRecipe = () => {
             required
             className={styles.createTextField}
           />
+
+          {ownerOptions.length > 1 && (
+            <>
+              <label htmlFor="recipe_book_owner" className="marginRight">
+                {t.recipeBook.recipeBookOwner}
+              </label>
+              <Dropdown
+                name="recipe_book_owner"
+                onUpdate={(ownerId) => setOwnerId(ownerId)}
+                options={ownerOptions}
+                defaultValue={ownerOptions[0].value}
+                visibleSize={"auto"}
+                variant={"outlined"}
+              />
+            </>
+          )}
         </div>
         {error && <p className="errorText">{error}</p>}
         <Button

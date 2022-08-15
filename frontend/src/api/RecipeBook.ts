@@ -1,4 +1,4 @@
-import { Author } from "./Author";
+import { Owner } from "./Owner";
 import { Image } from "./Image";
 
 export interface RecipeBook {
@@ -7,7 +7,7 @@ export interface RecipeBook {
   uniqueName: string;
   image: Image;
   recipes: RecipeBookRecipe[];
-  uploadedBy: Author;
+  uploadedBy: Owner;
   author: string;
 }
 

@@ -129,7 +129,7 @@ const EditRecipe = ({ recipe, dataLoadError, tags }: EditRecipeProps) => {
     router.push(LOGIN_ENDPOINT);
   }
 
-  if (me && recipe.author.id !== me?.id) {
+  if (me && !me?.owners.some((owner) => owner.id === recipe.author.id)) {
     return <NoAccess text={t.recipe.noAccess} backUrl={ROOT_ENDPOINT} />;
   }
 

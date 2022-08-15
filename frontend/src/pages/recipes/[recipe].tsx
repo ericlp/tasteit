@@ -19,6 +19,7 @@ import { useMe } from "../../hooks/useMe";
 import { useModal } from "../../hooks/useModal";
 import { useTranslations } from "../../hooks/useTranslations";
 import CardLayout from "../../layouts/CardLayout";
+import { isThisOwner } from "../../util/isThisOwner";
 
 import styles from "./[recipe].module.scss";
 
@@ -150,7 +151,7 @@ const Recipe = ({ recipe, error }: RecipeProps) => {
               <Button
                 variant="secondary"
                 size="normal"
-                disabled={me?.id !== recipe.author.id}
+                disabled={!isThisOwner(recipe.author.id, me?.owners)}
                 onClick={() =>
                   openModal({
                     title: t.recipe.deleteModal.title,
@@ -184,7 +185,7 @@ const Recipe = ({ recipe, error }: RecipeProps) => {
                   <Button
                     variant="primary"
                     size="normal"
-                    disabled={me?.id !== recipe.author.id}
+                    disabled={!isThisOwner(recipe.author.id, me?.owners)}
                   >
                     {t.common.edit}
                   </Button>

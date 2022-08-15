@@ -1,4 +1,4 @@
-import { Author } from "./Author";
+import { Owner } from "./Owner";
 import { Image } from "./Image";
 import { Ingredient } from "./Ingredient";
 import { Step } from "./Step";
@@ -13,6 +13,6 @@ export interface EditRecipe {
   steps: Step[];
   ingredients: Ingredient[];
   images: Image[];
-  author: Author;
+  author: Owner;
   tags: string[];
 }
