@@ -6,7 +6,7 @@ import (
 )
 
 type AuthorsJson struct {
-	Authors []tables.User `json:"authors"`
+	Authors []tables.Owner `json:"authors"`
 }
 
 func GetAllAuthors() (*AuthorsJson, error) {
@@ -16,7 +16,7 @@ func GetAllAuthors() (*AuthorsJson, error) {
 	}
 
 	if authors == nil {
-		authors = make([]tables.User, 0)
+		authors = make([]tables.Owner, 0)
 	}
 
 	return &AuthorsJson{Authors: authors}, nil

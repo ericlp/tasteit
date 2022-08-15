@@ -1,9 +1,9 @@
 -- Setup a user and owner
-INSERT INTO tasteit_user (id, name)
-VALUES ('177e9825-7000-431b-96c8-3ef314eaf92e', 'mock_user');
+INSERT INTO tasteit_user (id, nick, cid)
+VALUES ('177e9825-7000-431b-96c8-3ef314eaf92e', 'smurf', 'cidcid');
 
 INSERT INTO owner (id, name, is_user)
-VALUES ('7cc2fc04-7379-4361-9f4e-079054933d2f', 'mock_user', 'true');
+VALUES ('7cc2fc04-7379-4361-9f4e-079054933d2f', 'smurf', 'true');
 
 INSERT INTO user_owner (owner_id, tasteit_user_id)
 VALUES ('7cc2fc04-7379-4361-9f4e-079054933d2f', '177e9825-7000-431b-96c8-3ef314eaf92e');
