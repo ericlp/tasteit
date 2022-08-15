@@ -2,8 +2,8 @@ package process
 
 import (
 	"fmt"
-	"github.com/ericlp/tasteit2/backend/internal/db/commands"
-	"github.com/ericlp/tasteit2/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/db/commands"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 )
 
 func DeleteRecipeBook(recipeBook *tables.RecipeBook) error {

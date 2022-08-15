@@ -1,10 +1,10 @@
 package process
 
 import (
-	"github.com/ericlp/tasteit2/backend/internal/db/commands"
-	"github.com/ericlp/tasteit2/backend/internal/db/queries"
-	"github.com/ericlp/tasteit2/backend/internal/db/tables"
-	"github.com/ericlp/tasteit2/backend/internal/models"
+	"github.com/ericlp/tasteit/backend/internal/db/commands"
+	"github.com/ericlp/tasteit/backend/internal/db/queries"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/models"
 	"github.com/google/uuid"
 )
 

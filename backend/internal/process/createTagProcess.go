@@ -1,11 +1,11 @@
 package process
 
 import (
-	"github.com/ericlp/tasteit2/backend/internal/common"
-	"github.com/ericlp/tasteit2/backend/internal/db/commands"
-	"github.com/ericlp/tasteit2/backend/internal/db/queries"
-	"github.com/ericlp/tasteit2/backend/internal/db/tables"
-	"github.com/ericlp/tasteit2/backend/internal/models"
+	"github.com/ericlp/tasteit/backend/internal/common"
+	"github.com/ericlp/tasteit/backend/internal/db/commands"
+	"github.com/ericlp/tasteit/backend/internal/db/queries"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/models"
 	"github.com/georgysavva/scany/pgxscan"
 )
 

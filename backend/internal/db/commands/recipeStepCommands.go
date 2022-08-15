@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/ericlp/tasteit2/backend/internal/db/tables"
+	"github.com/ericlp/tasteit/backend/internal/db/tables"
 	"github.com/georgysavva/scany/pgxscan"
 	"github.com/google/uuid"
 )
