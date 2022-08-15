@@ -10,6 +10,7 @@ import (
 )
 
 type MeJson struct {
+	User   models.User    `json:"user"`
 	Owners []models.Owner `json:"owners"`
 }
 
@@ -21,12 +22,15 @@ func Me(c *gin.Context) {
 		return
 	}
 
-	owners, err := process.GetOwnersJson(sessionData.UserID)
+	owners, err := process.GetOwnersJson(sessionData.User.Id)
 	if err != nil {
 		log.Printf("Failed to get user's owners from db: %v\n", err)
 		c.JSON(http.StatusInternalServerError, common.Error(common.ResponseInvalidUserId))
 		return
 	}
 
-	c.JSON(http.StatusOK, common.Success(&MeJson{Owners: owners}))
+	c.JSON(http.StatusOK, common.Success(&MeJson{
+		User:   sessionData.User,
+		Owners: owners,
+	}))
 }

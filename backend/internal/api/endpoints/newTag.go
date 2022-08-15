@@ -18,17 +18,7 @@ func NewTag(c *gin.Context) {
 		return
 	}
 
-	user, err := getSessionUser(c)
-	if err != nil {
-		log.Printf("Failed to retrieve user from context %s\n", err)
-		c.JSON(
-			http.StatusInternalServerError,
-			common.Error(common.ResponseInvalidUserId),
-		)
-		return
-	}
-
-	tag, err := process.CreateNewTag(tagJson, user)
+	tag, err := process.CreateNewTag(tagJson)
 	if err != nil {
 		if errors.Is(err, common.ErrNameTaken) {
 			c.JSON(
