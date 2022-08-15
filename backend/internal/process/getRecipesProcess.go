@@ -17,7 +17,7 @@ type ShortRecipeJson struct {
 	Name                string           `json:"name"`
 	UniqueName          string           `json:"uniqueName"`
 	ImageLink           string           `json:"imageLink"`
-	Author              tables.User      `json:"author"`
+	Author              tables.Owner     `json:"author"`
 	Tags                []models.TagJson `json:"tags"`
 	EstimatedTime       int              `json:"estimatedTime"`
 	NumberOfIngredients int              `json:"numberOfIngredients"`
@@ -25,7 +25,7 @@ type ShortRecipeJson struct {
 
 func toShortRecipeJson(
 	recipe *tables.Recipe,
-	user *tables.User,
+	owner *tables.Owner,
 	imageUrl string,
 	tags []models.TagJson,
 	numberOfIngredients int,
@@ -35,7 +35,7 @@ func toShortRecipeJson(
 		Name:                recipe.Name,
 		UniqueName:          recipe.UniqueName,
 		ImageLink:           imageUrl,
-		Author:              *user,
+		Author:              *owner,
 		Tags:                tags,
 		EstimatedTime:       recipe.EstimatedTime,
 		NumberOfIngredients: numberOfIngredients,
@@ -65,7 +65,7 @@ func GetRecipes() (*RecipesJson, error) {
 			imageUrl = imageNameToPath(image.ID, image.Name)
 		}
 
-		user, err := queries.GetUser(recipe.OwnedBy)
+		owner, err := queries.GetOwner(recipe.OwnedBy)
 		if err != nil {
 			return nil, err
 		}
@@ -87,7 +87,7 @@ func GetRecipes() (*RecipesJson, error) {
 
 		shortRecipes = append(
 			shortRecipes,
-			toShortRecipeJson(recipe, user, imageUrl, tags, ingredientsCount),
+			toShortRecipeJson(recipe, owner, imageUrl, tags, ingredientsCount),
 		)
 	}
 
