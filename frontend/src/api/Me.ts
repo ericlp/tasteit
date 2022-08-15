@@ -1,10 +1,7 @@
-export interface Me {
-  id: string;
-  name: string;
-  emails: UserEmail[];
-}
+import { Owner } from "./Owner";
+import { User } from "./User";
 
-export interface UserEmail {
-  email: string;
-  provider: string;
+export interface Me {
+  user: User;
+  owners: Owner[];
 }

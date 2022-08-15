@@ -86,7 +86,10 @@ const EditRecipeBook = ({
     router.push(LOGIN_ENDPOINT);
   }
 
-  if (me && recipeBook.uploadedBy.id !== me?.id) {
+  if (
+    me &&
+    !me?.owners.some((owner) => owner.id === recipeBook.uploadedBy.id)
+  ) {
     return (
       <NoAccess
         text={t.recipeBook.noAccess}
