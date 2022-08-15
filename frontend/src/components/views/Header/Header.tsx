@@ -26,16 +26,10 @@ const Header = () => {
           <Link href="/">
             <a>
               <div className={styles.escapeHatch}>
-                <Image
-                  src="/transparent_vrecipes_logo.svg"
-                  width="46"
-                  height="46"
-                  alt={t.common.logoAltText}
-                />
+                <h1>{t.header.pageTitle}</h1>
               </div>
             </a>
           </Link>
-          <h1>{t.header.pageTitle}</h1>
         </div>
         <div
           className={`${styles.headerActionsContainer} ${styles.headerSection}`}
