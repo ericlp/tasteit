@@ -9,7 +9,7 @@ import (
 )
 
 func getOrCreateUser(gammaUser *models.GammaMe) (*tables.User, error) {
-	user, err := queries.GetUserByName(gammaUser.Cid)
+	user, err := queries.GetUserByCID(gammaUser.Cid)
 	if err == nil {
 		return user, err
 	}

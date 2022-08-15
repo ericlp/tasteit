@@ -25,7 +25,7 @@ FROM tasteit_user
 WHERE cid=$1;
 `
 
-func GetUserByName(cid string) (*tables.User, error) {
+func GetUserByCID(cid string) (*tables.User, error) {
 	db := getDb()
 
 	var user tables.User
@@ -33,16 +33,16 @@ func GetUserByName(cid string) (*tables.User, error) {
 	return &user, err
 }
 
-var GetAllUsersWithRecipeQuery = `
-SELECT DISTINCT tasteit_user.id, tasteit_user.name
-FROm tasteit_user
-INNER JOIN recipe ON recipe.owned_by=tasteit_user.id
+var GetAllOwnersWithRecipeQuery = `
+SELECT DISTINCT owner.id, owner.name
+FROM owner
+INNER JOIN recipe ON recipe.owned_by=owner.id
 `
 
-func GetAllUsersWithRecipe() ([]tables.User, error) {
+func GetAllUsersWithRecipe() ([]tables.Owner, error) {
 	db := getDb()
 
-	var users []tables.User
-	err := pgxscan.Select(ctx, db, &users, GetAllUsersWithRecipeQuery)
-	return users, err
+	var owners []tables.Owner
+	err := pgxscan.Select(ctx, db, &owners, GetAllOwnersWithRecipeQuery)
+	return owners, err
 }
