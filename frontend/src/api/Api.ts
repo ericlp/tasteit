@@ -2,13 +2,13 @@ import axios, { AxiosResponse } from "axios";
 import encodeurl from "encodeurl";
 import getConfig from "next/config";
 
-import { Owner } from "./Owner";
 import { EditRecipe } from "./EditRecipe";
 import { EditRecipeBook } from "./EditRecipeBook";
 import { IMAGE_BASE_ENDPOINT, TAGS_BASE_ENDPOINT } from "./Endpoints";
 import { Image } from "./Image";
 import { Me } from "./Me";
 import { NewTag } from "./NewTag";
+import { Owner } from "./Owner";
 import { Recipe } from "./Recipe";
 import { RecipeBook } from "./RecipeBook";
 import { ShortRecipe } from "./ShortRecipe";

@@ -181,14 +181,14 @@ const TagRow = ({ tag, loggedInUser, setupEditTag }: TagRow) => {
           <>
             <button
               className={styles.TagsActionButton}
-              disabled={loggedInUser.id !== tag.author.id}
+              disabled={loggedInUser?.user.id !== tag.author.id}
               onClick={() => setupEditTag(tag)}
             >
               {t.common.edit}
             </button>
             <button
               className={styles.TagsActionButton}
-              disabled={loggedInUser.id !== tag.author.id}
+              disabled={loggedInUser?.user.id !== tag.author.id}
               onClick={() => {
                 openModal({
                   title: t.tag.deleteModal.title,

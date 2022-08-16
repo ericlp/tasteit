@@ -1,5 +1,5 @@
-import { Owner } from "./Owner";
 import { Image } from "./Image";
+import { Owner } from "./Owner";
 
 export interface RecipeBook {
   id: string;

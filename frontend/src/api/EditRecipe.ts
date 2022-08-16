@@ -1,6 +1,6 @@
-import { Owner } from "./Owner";
 import { Image } from "./Image";
 import { Ingredient } from "./Ingredient";
+import { Owner } from "./Owner";
 import { Step } from "./Step";
 
 export interface EditRecipe {
