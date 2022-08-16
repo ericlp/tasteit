@@ -3,84 +3,76 @@
 A recipe management website.
 
 ## Development setup
+
 To setup the development of the project there are some things that are necessary to be setup.
 
 ### Frontend
+
 For the frontend the following steps are necessary:
+
 1. Install the node dependencies in the `frontend/` folder (e.g. whilst inside of the `frontend/` folder run `yarn` or equivalent command).
-1. Be aware that there is a `.env.development` file in the `frontend/` folder, however it should work out of the box on any `linux` based system. 
+1. Be aware that there is a `.env.development` file in the `frontend/` folder, however it should work out of the box on any `linux` based system.
 1. In the **project root** folder, run `docker compose up`.
 
 ### Backend
+
 The backend is not included into the `docker compose` to simplify developing the backend without having to restart everything else.  
 The steps to setup the backend is as follows (all of these assume that you are inside of the `backend/` folder):
+
 1. Copy the `.env.example` file to `.env`, an explaination of all the fields in this file can be found [below](#environment-variables).
-1. Create a `whitelist.json` (path can be determined by the `whitelist` environment variable), 
-   this file describes which emails are allowed for oauth2 login, see [below](#whitelist) for the schema for this file.
-1. Either setup oauth2 login using one of the supported providers (github/facebook/microsoft/google) or set the `auth_enabled` environment variable to `false`.
-1. Run the main method in `backend/cmd/tasteit/main.go`.
+2. Setup the Oauth2 login for Gamma.
+3. Run the main method in `backend/cmd/tasteit/main.go`.
 
 ### Makefile
+
 In the root folder there is also a Makefile with the following commands:
-  - `mock` (also the default): inserts mock values into the database.
-  - `clear-db`: Clears the database (completely!) will require migrations to be re-run (i.e. restarting the backend).
+
+- `mock` (also the default): inserts mock values into the database.
+- `clear-db`: Clears the database (completely!) will require migrations to be re-run (i.e. restarting the backend).
 
 ### Migrations
+
 To update the schema for the database you need access to the migrations.
+
 1. `go get "github.com/golang-migrate/migrate/v4"`
 2. `export POSTGRESQL_URL='postgres://tasteit:password@localhost:5432/tasteit?sslmode=disable'`  
-The following is an example for how to create a set of up and down migrations, you can then edit the contents of the new `.sql` files.  
+   The following is an example for how to create a set of up and down migrations, you can then edit the contents of the new `.sql` files.
 3. `migrate -database ${POSTGRESQL_URL} -path db/migrations create -ext sql -dir db/migrations favorites`  
-This is how you then interact with the migrations, for COMMANDS see `migrate help`.  
-4. `migrate -database ${POSTGRESQL_URL} -path db/migrations COMMAND`  
-
+   This is how you then interact with the migrations, for COMMANDS see `migrate help`.
+4. `migrate -database ${POSTGRESQL_URL} -path db/migrations COMMAND`
 
 ## Environment variables
+
 The environment variables that can / have to be specified for the project.
 Note that for the moment ALL variables must exist / be non-empty to start the project.
 
 ### Frontend
- - `NEXT_PUBLIC_BASE_URL`: Url to the backend seen from the server-side nextjs docker container, default is `http://host.docker.internal:5000/api` which (together with the `docker-compose`) specifies the host machine on port `5000` where the backend should exist in development. In production this should be set to the domain the website is hosted on.
+
+- `NEXT_PUBLIC_BASE_URL`: Url to the backend seen from the server-side nextjs docker container, default is `http://host.docker.internal:5000/api` which (together with the `docker-compose`) specifies the host machine on port `5000` where the backend should exist in development. In production this should be set to the domain the website is hosted on.
 
 ### Backend
- - `db_user` (string): Username for the database.
- - `db_password` (string): Password for the database.
- - `db_name` (string): Name of the database.
- - `db_host` (string): Host address for the database.
- - `reset_db` (boolean): Whether to clear the database on startup or not.
- - `image_folder` (string): Path to where uploaded images should be stored.
- - `whitelist` (string): Path to the `whitelist.json` file (explained [below](#whitelist)).
- - `secret` (string): Secret used to encrypt session cookies with.
- - `GIN_MODE` (string): The mode for the `Gin` framework, see [github](https://github.com/gin-gonic/gin).
- - `PORT` (integer): The port to host the backend on.
- - `auth_enabled` (boolean): When set to true, bypasses oauth2 and sets the user to a `test` user.
 
-#### Oauth2 variables
-Here follows environment variables related to the currently supported oauth2 providers.
-The following 3 are exists for all of them where they are prefixed with the name of the provider (i.e. `github`, `google`, `facebook` or `microsoft`).
- - `_client_id`: The client id, retrieved when setting up the oauth2 service.
- - `_secret`: The secret, retrieved when setting up the oauth2 service.
- - `redirect_uri`: The uri to redirect to with the response from the provider (should be **frontend base url**`/api/auth/`**provider name**`/callback`).
+- `db_user` (string): Username for the database.
+- `db_password` (string): Password for the database.
+- `db_name` (string): Name of the database.
+- `db_host` (string): Host address for the database.
+- `reset_db` (boolean): Whether to clear the database on startup or not.
+- `image_folder` (string): Path to where uploaded images should be stored.
+- `secret` (string): Secret used to encrypt session cookies with.
+- `GIN_MODE` (string): The mode for the `Gin` framework, see [github](https://github.com/gin-gonic/gin).
+- `PORT` (integer): The port to host the backend on.
 
-A part from these some providers require extra fields as specified here:
-##### Github
- - `github_user_endpoint`: The endpoint from where to retrieve github user information.
- - `github_user_email_endpoint`: The endpoint from where to retrieve github user email address information.
+#### Gamma
 
-##### Facebook
- - `facebook_me_uri`: The uri to retrieve user information from the facebook api.
+Superadmin login: username=`admin` password=`password`.
+Adminer values: server=`gamma-db` username=`gamma` password=`gamma` database=`gamma`
 
-##### Microsoft
- - `microsoft_me_uri`: THe uri to retrieve user information from the microsoft api.
+For development, the client and secret is a bit funky. The default values wouldn't work so I set up a new client in gamma and retrieved its secret and clientId using adminer.
 
-#### Whitelist
-The whitelist file specifies who can login through the oauth2 endpoints, note that this specifies emails and that an email is valid for any of the providers.
-The format for the file should be:
-```json=
-{
-  "whitelisted_emails": [
-    "email@email.ocm",
-    ...
-  ]
-}
-```
+- `GAMMA_AUTHORIZATION_URI`: The uri to Gamma endpoint to login. (should be **gamma backend url**`/api/oauth/authorize`)
+- `GAMMA_REDIRECT_URI`: The uri to redirect to with the response from Gamma (should be **frontend base url**`/api/auth/account/callback`)
+- `GAMMA_TOKEN_URI`: (should be **gamma backend url**`/api/oath/token`)
+- `GAMMA_ME_URI`: The uri to fetch the me user object from gamma. (should be **gamma backend url**`/api/users/me`)
+- `GAMMA_SECRET`: The secret that gamma has stored for tasteIT, retrieved when setting up the oauth2 service. (example BefJFlmvJJjWTGPmpXWQXIpD6jzbSYAiwJRLqyUfUwrepd3gn4MGYAvROsZKQBVTiMapoRiDkRY)
+- `GAMMA_CLIENT_ID`: The client id that gamma has stored for tasteIT, retrieved when setting up the oauth2 service. (example meY2VSxhZIxtCCeKgJ7jH3Odli3UmmcvrwiELhtSsvzZ1bMt33E2QpD8ctHR7CJMBTBKRismZSX)
+- `GAMMA_LOGOUT_URL`: The url to log the user out. (should be **gamma backend url**`/api/logout`)
