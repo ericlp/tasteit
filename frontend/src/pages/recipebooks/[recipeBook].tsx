@@ -17,9 +17,9 @@ import { useMe } from "../../hooks/useMe";
 import { useModal } from "../../hooks/useModal";
 import { useTranslations } from "../../hooks/useTranslations";
 import CardLayout from "../../layouts/CardLayout";
+import { isThisOwner } from "../../util/isThisOwner";
 
 import styles from "./[recipeBook].module.scss";
-import {isThisOwner} from "../../util/isThisOwner";
 
 interface RecipeBookProps {
   recipeBook?: RecipeBook;
