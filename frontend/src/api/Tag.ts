@@ -1,5 +1,5 @@
-import { Owner } from "./Owner";
 import { RGBColor } from "./Color";
+import { Owner } from "./Owner";
 
 export interface Tag {
   id: string;
