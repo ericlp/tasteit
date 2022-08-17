@@ -1,9 +1,43 @@
+@import "../../../resources/styles/vars";
+
 .ingredientsContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.ingredientTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.portionForm {
+  width: 128px;
+  border: none;
+  color: black;
+
+  &:hover,
+  &:focus-within {
+    border: none;
+  }
+
+  input {
+    margin-right: $space-tiny;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+
+    &:hover,
+    &:focus-within {
+      border: 1px solid $primary-color;
+      color: black;
+
+    }
+
+  }
+
 }
 
 .ingredientTable {

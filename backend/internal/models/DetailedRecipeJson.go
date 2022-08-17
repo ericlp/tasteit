@@ -16,6 +16,7 @@ type DetailedRecipeJson struct {
 	Images          []ImageJson            `json:"images"`
 	Author          Owner                  `json:"author"`
 	Tags            []TagJson              `json:"tags"`
+	Portions        int                    `json:"portions"`
 }
 
 type RecipeStepJson struct {

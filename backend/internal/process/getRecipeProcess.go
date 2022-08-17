@@ -70,6 +70,7 @@ func GetRecipe(uniqueName string) (*models.DetailedRecipeJson, error) {
 			IsUser: owner.IsUser,
 		},
 		Tags: tags,
+		Portions:        recipe.Portions,
 	}, nil
 }
 

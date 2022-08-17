@@ -1,21 +1,52 @@
+import { useState } from "react";
+
 import { Ingredient } from "../../../api/Ingredient";
 import { useTranslations } from "../../../hooks/useTranslations";
+import TextField from "../../elements/TextField/TextField";
 
 import styles from "./IngredientTable.module.scss";
 
 export type IngredientTableProps = {
   ingredients: Ingredient[];
+  portions: number | undefined;
 };
 
-export const IngredientTable = ({ ingredients }: IngredientTableProps) => {
+export const IngredientTable = ({
+  ingredients,
+  portions,
+}: IngredientTableProps) => {
   const { t } = useTranslations();
+
+  const [scaledPortions, setScaledPortions] = useState(portions ?? 1);
+
+  const useScaling = portions !== undefined && portions > 0;
+
+  const ingredientScaling =
+    isNaN(scaledPortions) || !useScaling ? 1 : scaledPortions / portions;
+
   return (
     <div className={styles.ingredientsContainer}>
       <table className={styles.ingredientTable}>
         <thead>
           <tr>
             <th colSpan={2}>
-              <h3>{t.recipe.ingredients}</h3>
+              <div className={styles.ingredientTitle}>
+                <h3>{t.recipe.ingredients}</h3>
+                {useScaling && (
+                  <TextField
+                    placeholder={portions.toString()}
+                    onChange={(e) =>
+                      setScaledPortions(parseFloat(e.target.value))
+                    }
+                    type={"number"}
+                    min={0}
+                    step={"any"}
+                    max={999}
+                    className={styles.portionForm}
+                    postfixText={t.recipe.portionsSmall}
+                  />
+                )}
+              </div>
             </th>
           </tr>
         </thead>
@@ -26,7 +57,7 @@ export const IngredientTable = ({ ingredients }: IngredientTableProps) => {
                 <td colSpan={2}>
                   <h3 className={styles.ingredientHeading}>
                     {ingredient.name}
-                  </h3>{" "}
+                  </h3>
                 </td>
               ) : (
                 <>
@@ -37,7 +68,7 @@ export const IngredientTable = ({ ingredients }: IngredientTableProps) => {
                   </td>
                   <td className={styles.ingredientRowElement}>
                     <p className="alignRight">
-                      {getIngredientAmountUnit(ingredient)}
+                      {getIngredientAmountUnit(ingredient, ingredientScaling)}
                     </p>
                   </td>
                 </>
@@ -50,10 +81,13 @@ export const IngredientTable = ({ ingredients }: IngredientTableProps) => {
   );
 };
 
-function getIngredientAmountUnit(ingredient: Ingredient): string {
+function getIngredientAmountUnit(
+  ingredient: Ingredient,
+  ingredientScaling: number
+): string {
   if (ingredient.amount <= 0 || ingredient.unit === "") {
     return "--";
   }
 
-  return `${ingredient.amount} ${ingredient.unit}`;
+  return `${ingredient.amount * ingredientScaling} ${ingredient.unit}`;
 }

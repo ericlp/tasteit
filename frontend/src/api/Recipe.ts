@@ -16,4 +16,5 @@ export interface Recipe {
   images: Image[];
   author: Owner;
   tags: Tag[];
+  portions: number;
 }
