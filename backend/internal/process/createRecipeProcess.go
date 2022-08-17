@@ -23,6 +23,7 @@ func CreateRecipe(
 		"",
 		0,
 		0,
+		0,
 		newRecipe.OwnerId,
 	)
 	return recipe, err

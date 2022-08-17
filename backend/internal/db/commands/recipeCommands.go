@@ -7,15 +7,15 @@ import (
 )
 
 var createRecipeCommand = `
-INSERT INTO recipe(name, unique_name, description, oven_temp, estimated_time, deleted, owned_by)
-		   VALUES ($1,   $2,          $3,          $4,        $5,             $6,	   $7)
-RETURNING id, name, unique_name, description, oven_temp, estimated_time, deleted, owned_by`
+INSERT INTO recipe(name, unique_name, description, oven_temp, estimated_time, deleted, portions, owned_by)
+		   VALUES ($1,   $2,          $3,          $4,        $5,             $6,	   $7,       $8)
+RETURNING id, name, unique_name, description, oven_temp, estimated_time, deleted, portions, owned_by`
 
-func CreateRecipe(name, uniqueName, description string, ovenTemp, estimatedTime int, OwnedBy uuid.UUID) (*tables.Recipe, error) {
+func CreateRecipe(name, uniqueName, description string, ovenTemp, estimatedTime, portions int, OwnedBy uuid.UUID) (*tables.Recipe, error) {
 	db := getDb()
 
 	var recipe tables.Recipe
-	err := pgxscan.Get(ctx, db, &recipe, createRecipeCommand, name, uniqueName, description, ovenTemp, estimatedTime, false, OwnedBy)
+	err := pgxscan.Get(ctx, db, &recipe, createRecipeCommand, name, uniqueName, description, ovenTemp, estimatedTime, portions, false, OwnedBy)
 	return &recipe, err
 }
 

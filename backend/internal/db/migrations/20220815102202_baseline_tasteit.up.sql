@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS recipe
     oven_temp      BIGINT,
     estimated_time BIGINT,
     deleted        BOOLEAN          NOT NULL,
+    portions       INTEGER          NOT NULL,
     owned_by       uuid REFERENCES owner (id)
 );
 
