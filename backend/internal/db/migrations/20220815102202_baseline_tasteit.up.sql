@@ -118,5 +118,6 @@ CREATE TABLE tag
 CREATE TABLE recipe_tag
 (
     recipe_id uuid REFERENCES recipe (id),
-    tag_id    uuid REFERENCES tag (id)
+    tag_id    uuid REFERENCES tag (id),
+    UNIQUE (recipe_id, tag_id)
 );
