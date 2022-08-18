@@ -1,24 +1,25 @@
 package process
 
 import (
-	common2 "github.com/ericlp/tasteit/backend/internal/common"
-	"github.com/ericlp/tasteit/backend/internal/db/commands"
-	"github.com/ericlp/tasteit/backend/internal/db/queries"
-	"github.com/ericlp/tasteit/backend/internal/db/tables"
-	"github.com/ericlp/tasteit/backend/internal/models"
 	"github.com/georgysavva/scany/pgxscan"
+	"github.com/google/uuid"
+	common2 "github.com/viddem/vrecipes/backend/internal/common"
+	"github.com/viddem/vrecipes/backend/internal/db/commands"
+	"github.com/viddem/vrecipes/backend/internal/db/queries"
+	"github.com/viddem/vrecipes/backend/internal/db/tables"
+	"github.com/viddem/vrecipes/backend/internal/models"
 	"strings"
 )
 
 func CreateRecipe(
-	newRecipe *models.NewRecipeJson,
+	name string, userId uuid.UUID,
 ) (*tables.Recipe, error) {
-	uniqueName, err := generateUniqueName(newRecipe.Name)
+	uniqueName, err := generateUniqueName(name)
 	if err != nil {
 		return nil, err
 	}
 	recipe, err := commands.CreateRecipe(
-		newRecipe.Name,
+		name,
 		uniqueName,
 		"",
 		0,
@@ -31,8 +32,9 @@ func CreateRecipe(
 
 func CreateNewRecipe(
 	recipeJson *models.NewRecipeJson,
+	user *tables.User,
 ) (string, error) {
-	recipe, err := CreateRecipe(recipeJson)
+	recipe, err := CreateRecipe(recipeJson.Name, user.ID)
 	if err != nil {
 		return "", err
 	}

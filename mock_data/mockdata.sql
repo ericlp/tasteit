@@ -19,33 +19,33 @@ VALUES  ('133cdcc3-5b5b-440e-95f5-0d5dd4f8f78b', 'A recipe', 'a_recipe', 'A long
         ('ff9373ea-c5d1-4d05-a299-e0856833131d', 'A recipe 7', 'a_recipe_7', 'Desc', 0, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
         ('dfed936b-8e2a-458c-a2d7-1c13c14079d6', 'A recipe with a very long god damned name', 'a_recipe_with_a_very_long_god_damned_name', 'Desc', 0, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
         
-        ('4213b5e5-0c63-4d31-ba96-a54a574bb040', 'A recipe 9', 'a_recipe_9', 'Desc', 0, 30, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('dca1bc12-0cf0-49e9-b0f9-a14f9e0c2975', 'A recipe 11', 'a_recipe_11', 'Desc', 100, 45, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('1281fa39-3209-4cbf-b359-a554e232f323', 'A recipe 12', 'a_recipe_12', 'Desc', 150, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('ff9373ea-c5d1-4d05-a299-a0856833131d', 'A recipe 13', 'a_recipe_13', 'Desc', 0, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('4213b5e5-0c63-4d31-ba96-b54a574bb040', 'A recipe 14', 'a_recipe_14', 'Desc', 0, 30, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('dca1bc12-0cf0-49e9-b0f9-b14f9e0c2975', 'A recipe 15', 'a_recipe_15', 'Desc', 100, 45, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('1281fa39-3209-4cbf-b359-b554e232f323', 'A recipe 16', 'a_recipe_16', 'Desc', 150, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('ff9373ea-c5d1-4d05-a299-b0856833131d', 'A recipe 17', 'a_recipe_17', 'Desc', 0, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('4213b5e5-0c63-4d31-ba96-c54a574bb040', 'A recipe 18', 'a_recipe_18', 'Desc', 0, 30, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('dca1bc12-0cf0-49e9-b0f9-c14f9e0c2975', 'A recipe 19', 'a_recipe_19', 'Desc', 100, 45, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('1281fa39-3209-4cbf-b359-c554e232f323', 'A recipe 20', 'a_recipe_20', 'Desc', 150, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('ff9373ea-c5d1-4d05-a299-c0856833131d', 'A recipe 21', 'a_recipe_21', 'Desc', 0, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('4213b5e5-0c63-4d31-ba96-d54a574bb040', 'A recipe 31', 'a_recipe_31', 'Desc', 0, 30, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('dca1bc12-0cf0-49e9-b0f9-d14f9e0c2975', 'A recipe 32', 'a_recipe_32', 'Desc', 100, 45, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('1281fa39-3209-4cbf-b359-d554e232f323', 'A recipe 33', 'a_recipe_33', 'Desc', 150, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('ff9373ea-c5d1-4d05-a299-d0856833131d', 'A recipe 34', 'a_recipe_34', 'Desc', 0, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('a213b5e5-0c63-4d31-ba96-c54a574bb040', 'A recipe 35', 'a_recipe_35', 'Desc', 0, 30, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('dca1bc12-0cf0-49e9-b0f9-114f9e0c2975', 'A recipe 37', 'a_recipe_37', 'Desc', 100, 45, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('1281fa39-3209-4cbf-b359-1554e232f323', 'A recipe 39', 'a_recipe_39', 'Desc', 150, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
-        ('ff9373ea-c5d1-4d05-a299-10856833131d', 'A recipe 40', 'a_recipe_40', 'Desc', 0, 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f');
+        ('4213b5e5-0c63-4d31-ba96-a54a574bb040', 'A recipe 9', 'a_recipe_9', 'Desc', 0, 30, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('dca1bc12-0cf0-49e9-b0f9-a14f9e0c2975', 'A recipe 11', 'a_recipe_11', 'Desc', 100, 45, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('1281fa39-3209-4cbf-b359-a554e232f323', 'A recipe 12', 'a_recipe_12', 'Desc', 150, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('ff9373ea-c5d1-4d05-a299-a0856833131d', 'A recipe 13', 'a_recipe_13', 'Desc', 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('4213b5e5-0c63-4d31-ba96-b54a574bb040', 'A recipe 14', 'a_recipe_14', 'Desc', 0, 30, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('dca1bc12-0cf0-49e9-b0f9-b14f9e0c2975', 'A recipe 15', 'a_recipe_15', 'Desc', 100, 45, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('1281fa39-3209-4cbf-b359-b554e232f323', 'A recipe 16', 'a_recipe_16', 'Desc', 150, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('ff9373ea-c5d1-4d05-a299-b0856833131d', 'A recipe 17', 'a_recipe_17', 'Desc', 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('4213b5e5-0c63-4d31-ba96-c54a574bb040', 'A recipe 18', 'a_recipe_18', 'Desc', 0, 30, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('dca1bc12-0cf0-49e9-b0f9-c14f9e0c2975', 'A recipe 19', 'a_recipe_19', 'Desc', 100, 45, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('1281fa39-3209-4cbf-b359-c554e232f323', 'A recipe 20', 'a_recipe_20', 'Desc', 150, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('ff9373ea-c5d1-4d05-a299-c0856833131d', 'A recipe 21', 'a_recipe_21', 'Desc', 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('4213b5e5-0c63-4d31-ba96-d54a574bb040', 'A recipe 31', 'a_recipe_31', 'Desc', 0, 30, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('dca1bc12-0cf0-49e9-b0f9-d14f9e0c2975', 'A recipe 32', 'a_recipe_32', 'Desc', 100, 45, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('1281fa39-3209-4cbf-b359-d554e232f323', 'A recipe 33', 'a_recipe_33', 'Desc', 150, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('ff9373ea-c5d1-4d05-a299-d0856833131d', 'A recipe 34', 'a_recipe_34', 'Desc', 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('a213b5e5-0c63-4d31-ba96-c54a574bb040', 'A recipe 35', 'a_recipe_35', 'Desc', 0, 30, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('dca1bc12-0cf0-49e9-b0f9-114f9e0c2975', 'A recipe 37', 'a_recipe_37', 'Desc', 100, 45, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('1281fa39-3209-4cbf-b359-1554e232f323', 'A recipe 39', 'a_recipe_39', 'Desc', 150, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f'),
+        ('ff9373ea-c5d1-4d05-a299-10856833131d', 'A recipe 40', 'a_recipe_40', 'Desc', 0, 0, false, '7cc2fc04-7379-4361-9f4e-079054933d2f');
 
 
 -- Create some tags
-INSERT INTO tag (id, name, description, color_red, color_green, color_blue, owned_by)
+INSERT INTO tag (id, name, description, color_red, color_green, color_blue, created_by)
 VALUES ('5ba8d0db-69d1-4cab-b705-0e8287129254', 'Fish', 'Contains fish', 0, 0, 255, '7cc2fc04-7379-4361-9f4e-079054933d2f');
 
-INSERT INTO tag (id, name, description, color_red, color_green, color_blue, owned_by)
+INSERT INTO tag (id, name, description, color_red, color_green, color_blue, created_by)
 VALUES ('0db80f48-66f4-41f3-a5af-b76ff4d9f715', 'Vegetables', 'Contains veggies', 0, 255, 0, '7cc2fc04-7379-4361-9f4e-079054933d2f');
 
 -- Connect Recipes with tags
@@ -93,7 +93,7 @@ VALUES                      ('133cdcc3-5b5b-440e-95f5-0d5dd4f8f78b', '0d9828df-f
                             ('dfed936b-8e2a-458c-a2d7-1c13c14079d6', '5d321c96-61c6-45a0-8c1f-129fd221e817');
 
 -- Create recipebooks
-INSERT INTO recipe_book     (name, unique_name, author, deleted, id, owned_by)
+INSERT INTO recipe_book     (name, unique_name, author, deleted, id, created_by)
 VALUES                      ('A book', 'a_book', 'Vidde', false, '828adce0-a887-41ce-afdf-5c0bc7124252', '7cc2fc04-7379-4361-9f4e-079054933d2f'),
                             ('Another book', 'another_book', 'PEDRO', false, '14f6d4de-c2c3-4a9f-8f8d-1c1550fd198f', '7cc2fc04-7379-4361-9f4e-079054933d2f'),
                             ('A third book', 'a_third_book', 'That other guy', false, '63fb8fd4-cf5b-4384-8c57-aae06d57cd6e', '7cc2fc04-7379-4361-9f4e-079054933d2f'),
