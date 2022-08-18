@@ -1,10 +1,12 @@
--- Setup a user
-INSERT INTO vrecipes_user (id, name)
-VALUES ('7cc2fc04-7379-4361-9f4e-079054933d2f', 'mock_user');
+-- Setup a user and owner
+INSERT INTO tasteit_user (id, nick, cid)
+VALUES ('177e9825-7000-431b-96c8-3ef314eaf92e', 'smurf', 'cidcid');
 
-INSERT INTO user_email (email, provider, user_id)
-VALUES ('test@test.com', 'facebook', '7cc2fc04-7379-4361-9f4e-079054933d2f');
+INSERT INTO owner (id, name, is_user)
+VALUES ('7cc2fc04-7379-4361-9f4e-079054933d2f', 'smurf', 'true');
 
+INSERT INTO user_owner (owner_id, tasteit_user_id)
+VALUES ('7cc2fc04-7379-4361-9f4e-079054933d2f', '177e9825-7000-431b-96c8-3ef314eaf92e');
 
 -- Insert recipes
 INSERT INTO recipe (id, name, unique_name, description, oven_temp, estimated_time, portions, deleted, owned_by)
@@ -40,10 +42,10 @@ VALUES  ('133cdcc3-5b5b-440e-95f5-0d5dd4f8f78b', 'A recipe', 'a_recipe', 'A long
 
 
 -- Create some tags
-INSERT INTO tag (id, name, description, color_red, color_green, color_blue, created_by)
+INSERT INTO tag (id, name, description, color_red, color_green, color_blue, owned_by)
 VALUES ('5ba8d0db-69d1-4cab-b705-0e8287129254', 'Fish', 'Contains fish', 0, 0, 255, '7cc2fc04-7379-4361-9f4e-079054933d2f');
 
-INSERT INTO tag (id, name, description, color_red, color_green, color_blue, created_by)
+INSERT INTO tag (id, name, description, color_red, color_green, color_blue, owned_by)
 VALUES ('0db80f48-66f4-41f3-a5af-b76ff4d9f715', 'Vegetables', 'Contains veggies', 0, 255, 0, '7cc2fc04-7379-4361-9f4e-079054933d2f');
 
 -- Connect Recipes with tags
@@ -91,7 +93,7 @@ VALUES                      ('133cdcc3-5b5b-440e-95f5-0d5dd4f8f78b', '0d9828df-f
                             ('dfed936b-8e2a-458c-a2d7-1c13c14079d6', '5d321c96-61c6-45a0-8c1f-129fd221e817');
 
 -- Create recipebooks
-INSERT INTO recipe_book     (name, unique_name, author, deleted, id, created_by)
+INSERT INTO recipe_book     (name, unique_name, author, deleted, id, owned_by)
 VALUES                      ('A book', 'a_book', 'Vidde', false, '828adce0-a887-41ce-afdf-5c0bc7124252', '7cc2fc04-7379-4361-9f4e-079054933d2f'),
                             ('Another book', 'another_book', 'PEDRO', false, '14f6d4de-c2c3-4a9f-8f8d-1c1550fd198f', '7cc2fc04-7379-4361-9f4e-079054933d2f'),
                             ('A third book', 'a_third_book', 'That other guy', false, '63fb8fd4-cf5b-4384-8c57-aae06d57cd6e', '7cc2fc04-7379-4361-9f4e-079054933d2f'),
