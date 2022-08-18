@@ -65,9 +65,8 @@ Note that for the moment ALL variables must exist / be non-empty to start the pr
 #### Gamma
 
 Superadmin login: username=`admin` password=`password`.
-Adminer values: server=`gamma-db` username=`gamma` password=`gamma` database=`gamma`
 
-For development, the client and secret is a bit funky. The default values wouldn't work so I set up a new client in gamma and retrieved its secret and clientId using adminer.
+For development, the client and secret is a bit funky. The default values wouldn't work so I set up a new client in gamma and retrieved its secret and clientId.
 
 - `GAMMA_AUTHORIZATION_URI`: The uri to Gamma endpoint to login. (should be **gamma backend url**`/api/oauth/authorize`)
 - `GAMMA_REDIRECT_URI`: The uri to redirect to with the response from Gamma (should be **frontend base url**`/api/auth/account/callback`)
