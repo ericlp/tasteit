@@ -1,54 +1,44 @@
-# TasteIT
+# Vrecipes
 
 A recipe management website.
 
 ## Development setup
-
 To setup the development of the project there are some things that are necessary to be setup.
 
 ### Frontend
-
 For the frontend the following steps are necessary:
-
 1. Install the node dependencies in the `frontend/` folder (e.g. whilst inside of the `frontend/` folder run `yarn` or equivalent command).
-1. Be aware that there is a `.env.development` file in the `frontend/` folder, however it should work out of the box on any `linux` based system.
+1. Be aware that there is a `.env.development` file in the `frontend/` folder, however it should work out of the box on any `linux` based system. 
 1. In the **project root** folder, run `docker compose up`.
 
 ### Backend
-
 The backend is not included into the `docker compose` to simplify developing the backend without having to restart everything else.  
 The steps to setup the backend is as follows (all of these assume that you are inside of the `backend/` folder):
-
 1. Copy the `.env.example` file to `.env`, an explaination of all the fields in this file can be found [below](#environment-variables).
 2. Setup the Oauth2 login for Gamma.
 3. Run the main method in `backend/cmd/tasteit/main.go`.
 
 ### Makefile
-
 In the root folder there is also a Makefile with the following commands:
 
 - `mock` (also the default): inserts mock values into the database.
-- `clear-db`: Clears the database (completely!) will require migrations to be re-run (i.e. restarting the backend).
+- `clear-db`: `clean` is an alias for this. Clears the database (completely!) will require migrations to be re-run (i.e. restarting the backend).
+- `clean`: Alias for `clear-db`.
+- `new-migration mig_name_arg=*insert-migration-name*`: creates a new migration with the specified name.
+- `run-migrations`: runs all migrations.
+- `reset`: Perform `clean`, `run-migrations`, `mock` in that order.
 
 ### Migrations
-
 To update the schema for the database you need access to the migrations.
-
 1. `go get "github.com/golang-migrate/migrate/v4"`
-2. `export POSTGRESQL_URL='postgres://tasteit:password@localhost:5432/tasteit?sslmode=disable'`  
-   The following is an example for how to create a set of up and down migrations, you can then edit the contents of the new `.sql` files.
-3. `migrate -database ${POSTGRESQL_URL} -path db/migrations create -ext sql -dir db/migrations favorites`  
-   This is how you then interact with the migrations, for COMMANDS see `migrate help`.
-4. `migrate -database ${POSTGRESQL_URL} -path db/migrations COMMAND`
+2. Then run `make new-migration mig_name_arg=*insert-migration-name*`
 
 ## Environment variables
-
 The environment variables that can / have to be specified for the project.
 Note that for the moment ALL variables must exist / be non-empty to start the project.
 
 ### Frontend
-
-- `NEXT_PUBLIC_BASE_URL`: Url to the backend seen from the server-side nextjs docker container, default is `http://host.docker.internal:5000/api` which (together with the `docker-compose`) specifies the host machine on port `5000` where the backend should exist in development. In production this should be set to the domain the website is hosted on.
+ - `NEXT_PUBLIC_BASE_URL`: Url to the backend seen from the server-side nextjs docker container, default is `http://host.docker.internal:5000/api` which (together with the `docker-compose`) specifies the host machine on port `5000` where the backend should exist in development. In production this should be set to the domain the website is hosted on.
 
 ### Backend
 
