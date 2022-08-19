@@ -7,7 +7,7 @@ import (
 )
 
 var getOwnerByIdQuery = `
-SELECT id, name, is_user
+SELECT id, name
 FROM owner		 
 WHERE id=$1`
 
@@ -20,7 +20,7 @@ func GetOwner(id uuid.UUID) (*tables.Owner, error) {
 }
 
 var getOwnerByNameQuery = `
-SELECT id, name, is_user
+SELECT id, name
 FROM owner
 WHERE name=$1;
 `
@@ -34,7 +34,7 @@ func GetOwnerByName(name string) (*tables.Owner, error) {
 }
 
 var getOwnersByUserIDQuery = `
-SELECT id, name, is_user
+SELECT id, name
 FROM user_owner JOIN owner ON user_owner.owner_id = owner.id
 WHERE tasteit_user_id=$1`
 

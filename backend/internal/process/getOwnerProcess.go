@@ -14,7 +14,7 @@ func GetOwnersJson(id uuid.UUID) ([]models.Owner, error) {
 
 	ownersJson := make([]models.Owner, 0)
 	for _, owner := range owners {
-		ownersJson = append(ownersJson, models.Owner{Name: owner.Name, Id: owner.ID, IsUser: owner.IsUser})
+		ownersJson = append(ownersJson, models.Owner{Name: owner.Name, Id: owner.ID})
 	}
 
 	return ownersJson, nil

@@ -54,9 +54,8 @@ func GetRecipeBook(uniqueName string) (*models.DetailedRecipeBookJson, error) {
 		Name:       recipeBook.Name,
 		UniqueName: recipeBook.UniqueName,
 		UploadedBy: models.Owner{
-			Id:     owner.ID,
-			Name:   owner.Name,
-			IsUser: owner.IsUser,
+			Id:   owner.ID,
+			Name: owner.Name,
 		},
 		Author:  recipeBook.Author,
 		Recipes: recipeJsons,

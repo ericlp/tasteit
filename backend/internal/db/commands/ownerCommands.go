@@ -7,14 +7,14 @@ import (
 )
 
 var createDefaultOwnerCommand = `
-INSERT INTO owner(name, is_user)
-VALUES(			  $1, TRUE)
+INSERT INTO owner(name)
+VALUES(			  $1)
 RETURNING id, name
 `
 
 var createOwnerCommand = `
-INSERT INTO owner(name, is_user)
-VALUES(			  $1, FALSE)
+INSERT INTO owner(name)
+VALUES(			  $1)
 RETURNING id, name
 `
 

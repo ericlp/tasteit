@@ -44,9 +44,8 @@ func GetTags() (*TagsJson, error) {
 				},
 				RecipeCount: recipeCount,
 				Author: models.Owner{
-					Id:     owner.ID,
-					Name:   owner.Name,
-					IsUser: owner.IsUser,
+					Id:   owner.ID,
+					Name: owner.Name,
 				},
 			},
 		)

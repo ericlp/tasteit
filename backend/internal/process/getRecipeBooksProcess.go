@@ -29,9 +29,8 @@ func toShortRecipeBookJson(recipeBook *tables.RecipeBook, owner *tables.Owner, i
 		Author:     recipeBook.Author,
 		ImageLink:  imageUrl,
 		UploadedBy: models.Owner{
-			Id:     owner.ID,
-			Name:   owner.Name,
-			IsUser: owner.IsUser,
+			Id:   owner.ID,
+			Name: owner.Name,
 		},
 	}
 }

@@ -18,9 +18,8 @@ func GetAllAuthors() (*AuthorsJson, error) {
 	authorsJson := make([]models.Owner, 0)
 	for _, author := range authors {
 		authorsJson = append(authorsJson, models.Owner{
-			Id:     author.ID,
-			Name:   author.Name,
-			IsUser: author.IsUser,
+			Id:   author.ID,
+			Name: author.Name,
 		})
 	}
 

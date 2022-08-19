@@ -9,10 +9,8 @@ CREATE TABLE IF NOT EXISTS tasteit_user
 
 CREATE TABLE IF NOT EXISTS owner
 (
-    id      uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name    TEXT NOT NULL,
-    is_user BOOLEAN,
-    UNIQUE (name, is_user)
+    id   uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS user_owner
