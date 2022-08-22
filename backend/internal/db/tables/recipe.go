@@ -12,6 +12,7 @@ type Recipe struct {
 	Deleted       bool
 	OwnedBy       uuid.UUID
 	Portions      int
+	PortionsSuffix string
 }
 
 func (_ Recipe) StructName() string {

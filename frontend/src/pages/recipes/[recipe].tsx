@@ -112,6 +112,7 @@ const Recipe = ({ recipe, error }: RecipeProps) => {
                 <IngredientTable
                   ingredients={recipe.ingredients}
                   portions={recipe.portions}
+                  portionsSuffix={recipe.portionsSuffix}
                 />
               </div>
             )}

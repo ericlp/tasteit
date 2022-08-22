@@ -17,6 +17,7 @@ type DetailedRecipeJson struct {
 	Author          Owner                  `json:"author"`
 	Tags            []TagJson              `json:"tags"`
 	Portions        int                    `json:"portions"`
+	PortionsSuffix  string                 `json:"portionsSuffix"`
 }
 
 type RecipeStepJson struct {
