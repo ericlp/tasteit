@@ -51,7 +51,7 @@ const Login = () => {
               height={"16px"}
             />
           </div>
-          {t.login.loginWithMicrosoft}
+          {t.login.loginWithGamma}
         </Button>
 
         <div className={"space"} />
