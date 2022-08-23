@@ -24,17 +24,18 @@ To setup the development of the project there are some things that are necessary
 For the frontend the following steps are necessary:
 
 1. Install the node dependencies in the `frontend/` folder (e.g. whilst inside of the `frontend/` folder run `yarn` or equivalent command).
-1. Be aware that there is a `.env.development` file in the `frontend/` folder, however it should work out of the box on any `linux` based system.
-1. In the **project root** folder, run `docker compose up`.
+2. Be aware that there is a `.env.development` file in the `frontend/` folder.
+3. In the **project root** folder, run `docker compose up`.
 
 ### Backend
 
+_Requires go to be installed_
 The backend is not included into the `docker compose` to simplify developing the backend without having to restart everything else.  
 The steps to setup the backend is as follows (all of these assume that you are inside of the `backend/` folder):
 
 1. Copy the `.env.example` file to `.env`, an explaination of all the fields in this file can be found [below](#environment-variables).
-2. Setup the Oauth2 login for Gamma.
-3. Run the main method in `backend/cmd/tasteit/main.go`.
+2. Run ``
+3. Run the main method in `backend/cmd/tasteit/main.go`. Use `go run ......./main.go` or run using IntelliJ Goland
 
 ### Makefile
 
@@ -45,7 +46,8 @@ In the root folder there is also a Makefile with the following commands:
 - `clean`: Alias for `clear-db`.
 - `new-migration mig_name_arg=*insert-migration-name*`: creates a new migration with the specified name.
 - `run-migrations`: runs all migrations.
-- `reset`: Perform `clean`, `run-migrations`, `mock` in that order.
+- `setup-gamma-client`: resets the client in gamma with client_id and secret equal to that in .env.example
+- `reset-setup-db`: Perform `clean`, `run-migrations`, `mock`, `setup-gamma-client` in that order.
 
 ### Migrations
 
