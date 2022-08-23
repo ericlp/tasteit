@@ -11,14 +11,15 @@ import (
 	"github.com/ericlp/tasteit/backend/internal/process"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"golang.org/x/oauth2"
 	"log"
 	"net/http"
 )
 
 type sessionData struct {
-	User  models.User   `json:"user"`
-	Token *oauth2.Token `json:"token"`
+	UserId uuid.UUID     `json:"userId"`
+	Token  *oauth2.Token `json:"token"`
 }
 
 var (
@@ -73,12 +74,8 @@ func setSession(
 	log.Printf("Retrieved session user: %v\n", user)
 	tokenJson, err := json.Marshal(
 		&sessionData{
-			User: models.User{
-				Id:   user.ID,
-				Nick: user.Nick,
-				CID:  user.CID,
-			},
-			Token: token,
+			UserId: user.ID,
+			Token:  token,
 		},
 	)
 	if err != nil {
