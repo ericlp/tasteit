@@ -15,7 +15,7 @@ func CreateRecipe(name, uniqueName, description string, ovenTemp, estimatedTime,
 	db := getDb()
 
 	var recipe tables.Recipe
-	err := pgxscan.Get(ctx, db, &recipe, createRecipeCommand, name, uniqueName, description, ovenTemp, estimatedTime, portions, false, OwnedBy)
+	err := pgxscan.Get(ctx, db, &recipe, createRecipeCommand, name, uniqueName, description, ovenTemp, estimatedTime, false, portions, OwnedBy)
 	return &recipe, err
 }
 
